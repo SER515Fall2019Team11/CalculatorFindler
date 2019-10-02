@@ -77,11 +77,20 @@ public class teacherInput extends JFrame {
     btnSubmit.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
 				try{    
-           FileWriter fw=new FileWriter("D:\\testout.txt");    
-           fw.write(questionText.getText());    
+           FileWriter fw=new FileWriter("D:\\testout.txt",true); 
+           fw.write("\nQuestion Number");
+           fw.write(questionNum.getText());
+           fw.write("\n");   
+           fw.write(questionText.getText());
+           fw.write("\nAnswer Number"); 
+           fw.write(questionNum.getText());
+           fw.write("\n");
+           fw.write(answerText.getText());
+           
+
            fw.close();    
           }catch(Exception ex){System.out.println(e);}    
-          System.out.println("Success..."); 
+          System.out.println("Successfully added to file"); 
        }   
    
     });
@@ -110,7 +119,7 @@ public class teacherInput extends JFrame {
 					.addContainerGap(553, Short.MAX_VALUE))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap(22, Short.MAX_VALUE)
-					.addComponent(answerText, GroupLayout.PREFERRED_SIZE, 578, GroupLayout.PREFERRED_SIZE)
+					.addComponent(answerText, GroupLayout.PREFERRED_SIZE, 578,GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap(527, Short.MAX_VALUE)
