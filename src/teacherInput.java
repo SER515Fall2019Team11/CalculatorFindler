@@ -15,6 +15,10 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.FileWriter;
+import java.nio.file.*;
+
+
 
 public class teacherInput extends JFrame {
 
@@ -73,6 +77,27 @@ public class teacherInput extends JFrame {
 		});
 		
 		JButton btnSubmit = new JButton("Submit");
+		btnSubmit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try{
+					Path currentRelativePath = Paths.get("");
+					String currentDir = currentRelativePath.toAbsolutePath().toString();
+					FileWriter fw=new FileWriter(currentDir + "\\testout.txt",true); 
+					fw.write("Question #");
+					fw.write(questionNum.getText());
+					fw.write("\n");   
+					fw.write(questionText.getText());
+					fw.write("\nAnswer #"); 
+					fw.write(questionNum.getText());
+					fw.write("\n");
+					fw.write(answerText.getText());
+					fw.write("\n");   
+					
+					fw.close();    
+				}catch(Exception ex){System.out.println(e);}    
+				System.out.println("Successfully added to file");
+			}
+		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
