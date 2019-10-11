@@ -81,11 +81,12 @@ public class teacherInput extends JFrame {
            fw.write("\nQuestion Number");
            fw.write(questionNum.getText());
            fw.write("\n");   
-           fw.write(questionText.getText());
-           fw.write("\nAnswer Number"); 
-           fw.write(questionNum.getText());
-           fw.write("\n");
-           fw.write(answerText.getText());
+	   FileWriter fwa=new FileWriter("D:\\testout.txt",true);			
+           fwa.write(questionText.getText());
+           fwa.write("\nAnswer Number"); 
+           fwa.write(questionNum.getText());
+           fwa.write("\n");
+           fwa.write(answerText.getText());
            
 
            fw.close();    
