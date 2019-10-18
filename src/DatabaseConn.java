@@ -2,6 +2,7 @@
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
+import java.sql.Statement;
 import java.util.Properties;
 
 public class DatabaseConn {
@@ -65,5 +66,24 @@ public class DatabaseConn {
 			return ret;
 		}
 
+	}
+	public boolean addQuestion(Connection conn, String sql) {
+		Statement stmt = null;
+		try {
+			stmt = conn.createStatement();
+			return (stmt.executeUpdate(sql) > 0);
+		} catch (Exception sqe) {
+			sqe.printStackTrace();
+			return false;
+		} finally {
+			try {
+				if (stmt != null) { stmt.close(); }
+			} catch (Exception e2) { e2.printStackTrace(); }
+			finally {
+				try {
+					if (conn != null) { conn.close(); }
+				} catch (Exception e3) { e3.printStackTrace(); }
+			}
+		}
 	}
 }
