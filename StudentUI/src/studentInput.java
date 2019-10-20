@@ -155,10 +155,16 @@ public class studentInput {
 		JButton button_11 = new JButton("-");
 		button_11.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				textField_1.setText("-");
 			}
 		});
 		
 		JButton button_12 = new JButton("/");
+		button_12.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textField_1.setText("/");
+			}
+		});
 		
 		JButton button_13 = new JButton("=");
 		button_13.addActionListener(new ActionListener() {
@@ -167,8 +173,11 @@ public class studentInput {
 				int result=0;
 				if(op.equals("+"))
 					result = Integer.parseInt(textField.getText()) + Integer.parseInt(textField_2.getText());
+				else if(op.equals("-"))
+					result = Integer.parseInt(textField.getText()) - Integer.parseInt(textField_2.getText());
+				else if(op.equals("/"))
+					result = Integer.parseInt(textField.getText()) / Integer.parseInt(textField_2.getText());
 				textField_3.setText(Integer.toString(result));
-				
 			}
 		});
 		
