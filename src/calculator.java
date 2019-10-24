@@ -34,15 +34,17 @@ public class calculator {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		CalculatorOperationPanel operationPanel = new CalculatorOperationPanel();
-		DragAndDropPanel dPanel = new DragAndDropPanel();
-		QuestionDisplayPanel qPanel = new QuestionDisplayPanel();
 		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 600, 450);
+		DragAndDropPanel dPanel = new DragAndDropPanel();
+		CalculatorOperationPanel operationPanel = new CalculatorOperationPanel(dPanel);
+		QuestionDisplayPanel qPanel = new QuestionDisplayPanel(frame);
+		
 		frame.add(operationPanel);
 		frame.add(dPanel);
 		frame.add(qPanel);
+		
 		frame.setLayout(new GridLayout(1,3));
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

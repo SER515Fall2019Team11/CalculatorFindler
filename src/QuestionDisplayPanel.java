@@ -1,12 +1,20 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 
 import javax.swing.BorderFactory;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 public class QuestionDisplayPanel extends JPanel {
-
+	private JScrollPane scroll;
+	private JFrame frame;
+	private JTable table;
 	/**
 	 * 
 	 */
@@ -15,13 +23,33 @@ public class QuestionDisplayPanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public QuestionDisplayPanel() {
+	public QuestionDisplayPanel(JFrame frame) {
+		this.frame = frame;
 		init();
-		//this.setBorder(BorderFactory.createTitledBorder("Show Question"));
+		addComponentListener(new ComponentAdapter() {
+			@Override
+			public void componentResized(ComponentEvent e) {
+				TableAutoResize();
+				System.out.println(frame.getWidth());
+			}
+		});
+		this.setBorder(BorderFactory.createTitledBorder("Show Question"));
 	}
 	
 	private void init() {
+		scroll = new JScrollPane();
 		addTable();
+		this.setBackground(new Color(255,255,204));
+	}
+	private void TableAutoResize() {
+		table.setPreferredScrollableViewportSize(new Dimension(this.frame.getWidth() / 3, this.frame.getHeight()));
+		table.setBackground(new Color(255,255,204));
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+		scroll.setViewportView(table);
+		scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		table.setFillsViewportHeight(true);
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 	}
 	private void addTable() {
 		Object [][]data = { {"1", "5+3", "8"},
@@ -29,17 +57,9 @@ public class QuestionDisplayPanel extends JPanel {
 							{"3", "22+15*8", "144"}};
 		
 		String []colName = {"No.", "Question", "Answer"};
-		JTable table = new JTable(data, colName);
-		for(int i = 0; i < table.getColumnCount(); i++) {
-			table.getColumnModel().getColumn(i).setPreferredWidth(this.getWidth()/12);
-		}
-		JScrollPane scroll = new JScrollPane(table);
-		//scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		//scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		table.setFillsViewportHeight(true);
-		scroll.setAutoscrolls(true);
-		this.add(scroll);
-		//this.setPreferredSize(new Dimension(100, 100));
+		table = new JTable(data, colName);
+		TableAutoResize();
+		this.add(scroll, BorderLayout.CENTER);
 	}
 
 }

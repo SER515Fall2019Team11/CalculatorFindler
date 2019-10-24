@@ -2,8 +2,9 @@ import java.awt.Color;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
-public class DragAndDropPanel extends JPanel {
+public class DragAndDropPanel extends JTextArea {
 
 	/**
 	 * 
