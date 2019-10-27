@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
+
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
@@ -39,11 +41,13 @@ public class QuestionDisplayPanel extends JPanel {
 	private void init() {
 		scroll = new JScrollPane();
 		addTable();
-		this.setBackground(new Color(255,255,204));
+		//this.setBackground(new Color(255,255,204));
+		this.setBackground(Color.cyan);
 	}
 	private void TableAutoResize() {
 		table.setPreferredScrollableViewportSize(new Dimension(this.frame.getWidth() / 3, this.frame.getHeight()));
-		table.setBackground(new Color(255,255,204));
+		//table.setBackground(new Color(255,255,204));
+		table.setBackground(Color.cyan);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		scroll.setViewportView(table);
 		scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -58,6 +62,15 @@ public class QuestionDisplayPanel extends JPanel {
 		
 		String []colName = {"No.", "Question", "Answer"};
 		table = new JTable(data, colName);
+		//table.getTableHeader().setBackground(new Color(255,255,204));
+		table.getTableHeader().setBackground(Color.cyan);
+		table.getTableHeader().setForeground(Color.BLACK);
+		/*
+		DefaultTableCellRenderer rendar1 = new DefaultTableCellRenderer();
+	    rendar1.setForeground(Color.RED);
+	    for(int i = 0; i < table.getColumnCount(); i++) {
+	    	table.getColumnModel().getColumn(i).setCellRenderer(rendar1);
+	    }*/
 		TableAutoResize();
 		this.add(scroll, BorderLayout.CENTER);
 	}

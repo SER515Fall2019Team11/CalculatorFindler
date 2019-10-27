@@ -35,12 +35,12 @@ public class CalculatorOperationPanel extends JPanel {
 	private JButton btnNum7;
 	private JButton btnNum8;
 	private JButton btnNum9;*/
-	private JButton sample;
+	//private JButton sample;
 	private JButton btnPlus;
 	private JButton btnMinus;
 	private JButton btnMulti;
 	private JButton btnDivision;
-	private JPanel dragPanel;
+	private DragAndDropPanel dragPanel;
 	
 	//private JFrame dragPanelTest;
 	/**
@@ -51,7 +51,7 @@ public class CalculatorOperationPanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public CalculatorOperationPanel(JPanel dPanel) {
+	public CalculatorOperationPanel(DragAndDropPanel dPanel) {
 		dragPanel = dPanel;
 		init();
 	}
@@ -89,13 +89,14 @@ public class CalculatorOperationPanel extends JPanel {
 	private void panelInit() {
 		groupOperandBtn = new JPanel();
 		groupOperationBtn = new JPanel();
-		this.setBackground(new Color(255,255,204));
+		//this.setBackground(new Color(255,255,204));
+		this.setBackground(Color.cyan);
 	}
 	private void btnInit() {
 		DragMouseAdapter listener = new DragMouseAdapter();
 		for(int i = 1; i <= 9; i++) {
 			JButton btnOperand = new JButton(Integer.toString(i));
-			btnOperand.setForeground(Color.cyan);
+			//btnOperand.setForeground(Color.cyan);
 			//btnOperand.setBackground(Color.cyan);
 			groupOperandBtn.add(btnOperand);
 			/*
@@ -129,6 +130,7 @@ public class CalculatorOperationPanel extends JPanel {
 		btnPlus.setTransferHandler(new ValueExportTransferHandler("+"));
 		btnPlus.addMouseMotionListener(listener);
 		
+		/*
 		dragPanel.setLayout(new GridLayout(1,4));
 		JLabel b1 = new JLabel("Enter");
 		JLabel b2 = new JLabel("Enter");
@@ -150,12 +152,7 @@ public class CalculatorOperationPanel extends JPanel {
 		dragPanel.add(b4);
 		dragPanel.add(b5);
 		dragPanel.add(b6);
-		
-		
-		
-		
-		
-		
+		*/
 		
 		btnMinus = new JButton("-");
 		btnMinus.setTransferHandler(new ValueExportTransferHandler("-"));

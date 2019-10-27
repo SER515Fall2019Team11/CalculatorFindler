@@ -36,7 +36,7 @@ public class calculator {
 	private void initialize() {
 		
 		frame = new JFrame();
-		frame.setBounds(100, 100, 600, 450);
+		frame.setBounds(100, 100, 1200, 300);
 		DragAndDropPanel dPanel = new DragAndDropPanel();
 		CalculatorOperationPanel operationPanel = new CalculatorOperationPanel(dPanel);
 		QuestionDisplayPanel qPanel = new QuestionDisplayPanel(frame);
