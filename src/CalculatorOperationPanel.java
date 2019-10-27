@@ -2,17 +2,11 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.JTextPane;
-
-import java.awt.BorderLayout;
-
+import javax.swing.TransferHandler;
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.awt.Point;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseAdapter;
 
 public class CalculatorOperationPanel extends JPanel {
 	
@@ -42,23 +36,14 @@ public class CalculatorOperationPanel extends JPanel {
 	 * Create the panel.
 	 */
 	public CalculatorOperationPanel(JTextArea dPanel) {
-		dragPanel = dPanel;
+		this.dragPanel = dPanel;
 		init();
 	}
 	
 	public void init() {
 		panelInit();
 		btnInit();
-		/*
-		groupOperandBtn.add(btnNum1);
-		groupOperandBtn.add(btnNum2);
-		groupOperandBtn.add(btnNum3);
-		groupOperandBtn.add(btnNum4);
-		groupOperandBtn.add(btnNum5);
-		groupOperandBtn.add(btnNum6);
-		groupOperandBtn.add(btnNum7);
-		groupOperandBtn.add(btnNum8);
-		groupOperandBtn.add(btnNum9);*/
+		
 		groupOperandBtn.setLayout(new GridLayout(3,3));
 		groupOperandBtn.setBorder(BorderFactory.createTitledBorder("Operand"));
 		groupOperandBtn.setBackground(Color.cyan);
@@ -86,34 +71,14 @@ public class CalculatorOperationPanel extends JPanel {
 			btnOperand.setForeground(Color.cyan);
 			//btnOperand.setBackground(Color.cyan);
 			groupOperandBtn.add(btnOperand);
-			/*
-			btnOperand.addMouseListener(new MouseAdapter() {//add click event listener
-				@Override
-				public void mouseClicked(MouseEvent e) {
-					Object obj = e.getSource();
-					if(obj instanceof JButton) {
-						JButton btn = (JButton)obj;
-						JTextField textField = new JTextField(btn.getText());
-						textField.setDragEnabled(true);
-						dragPanel.add(textField);
-						dragPanel.revalidate();
-						System.out.println(btn.getText());
-					}
-				}
-			});*/
+			btnOperand.setTransferHandler(new ValueExportTransferHandler(btnOperand.getText()));
 			btnOperand.addMouseMotionListener(new MouseMotionAdapter() {
 				@Override
 				public void mouseDragged(MouseEvent e) {
 					JButton btn = (JButton)e.getSource();
 					//btn.setLocation(new Point(e.getX(), e.getY()));
-				}
-			});
-			btnOperand.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseReleased(MouseEvent e) {
-					JButton btn = (JButton)e.getSource();
-					System.out.println(btn.getText());
-					dragPanel.setText(btn.getText());
+                    TransferHandler handle = btn.getTransferHandler();
+                    handle.exportAsDrag(btn, e, TransferHandler.COPY);
 				}
 			});
 		}
