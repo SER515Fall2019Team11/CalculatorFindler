@@ -1,5 +1,7 @@
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -13,6 +15,11 @@ import java.awt.Point;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseAdapter;
+import javax.swing.TransferHandler;
+
+import DragMouseAdapter.DragMouseAdapter;
+import DragMouseAdapter.ValueExportTransferHandler;
+import DragMouseAdapter.ValueImportTransferHandler;
 
 public class CalculatorOperationPanel extends JPanel {
 	
@@ -28,11 +35,14 @@ public class CalculatorOperationPanel extends JPanel {
 	private JButton btnNum7;
 	private JButton btnNum8;
 	private JButton btnNum9;*/
+	private JButton sample;
 	private JButton btnPlus;
 	private JButton btnMinus;
 	private JButton btnMulti;
 	private JButton btnDivision;
-	private JTextArea dragPanel;
+	private JPanel dragPanel;
+	
+	//private JFrame dragPanelTest;
 	/**
 	 * 
 	 */
@@ -41,10 +51,11 @@ public class CalculatorOperationPanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public CalculatorOperationPanel(JTextArea dPanel) {
+	public CalculatorOperationPanel(JPanel dPanel) {
 		dragPanel = dPanel;
 		init();
 	}
+	
 	
 	public void init() {
 		panelInit();
@@ -81,6 +92,7 @@ public class CalculatorOperationPanel extends JPanel {
 		this.setBackground(new Color(255,255,204));
 	}
 	private void btnInit() {
+		DragMouseAdapter listener = new DragMouseAdapter();
 		for(int i = 1; i <= 9; i++) {
 			JButton btnOperand = new JButton(Integer.toString(i));
 			btnOperand.setForeground(Color.cyan);
@@ -101,26 +113,61 @@ public class CalculatorOperationPanel extends JPanel {
 					}
 				}
 			});*/
-			btnOperand.addMouseMotionListener(new MouseMotionAdapter() {
-				@Override
-				public void mouseDragged(MouseEvent e) {
-					JButton btn = (JButton)e.getSource();
-					//btn.setLocation(new Point(e.getX(), e.getY()));
-				}
-			});
-			btnOperand.addMouseListener(new MouseAdapter() {
+			btnOperand.setTransferHandler(new ValueExportTransferHandler(Integer.toString(i)));
+			btnOperand.addMouseMotionListener(listener);
+			/*btnOperand.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseReleased(MouseEvent e) {
 					JButton btn = (JButton)e.getSource();
 					System.out.println(btn.getText());
 					dragPanel.setText(btn.getText());
 				}
-			});
+			});*/ //Testing for Jframe
 		}
 		btnPlus = new JButton("+");
+		
+		btnPlus.setTransferHandler(new ValueExportTransferHandler("+"));
+		btnPlus.addMouseMotionListener(listener);
+		
+		dragPanel.setLayout(new GridLayout(1,4));
+		JLabel b1 = new JLabel("Enter");
+		JLabel b2 = new JLabel("Enter");
+		JLabel b3 = new JLabel("Enter");
+		JLabel b4 = new JLabel("Enter");
+		JLabel b5 = new JLabel("Enter");
+		JLabel b6 = new JLabel("Enter");
+		
+		b1.setTransferHandler(new ValueImportTransferHandler());
+		b2.setTransferHandler(new ValueImportTransferHandler());
+		b3.setTransferHandler(new ValueImportTransferHandler());
+		b4.setTransferHandler(new ValueImportTransferHandler());
+		b5.setTransferHandler(new ValueImportTransferHandler());
+		b6.setTransferHandler(new ValueImportTransferHandler());
+		
+		dragPanel.add(b1);
+		dragPanel.add(b2);
+		dragPanel.add(b3);
+		dragPanel.add(b4);
+		dragPanel.add(b5);
+		dragPanel.add(b6);
+		
+		
+		
+		
+		
+		
+		
 		btnMinus = new JButton("-");
+		btnMinus.setTransferHandler(new ValueExportTransferHandler("-"));
+		btnMinus.addMouseMotionListener(listener);
+		
 		btnMulti = new JButton("*");
+		btnMulti.setTransferHandler(new ValueExportTransferHandler("*"));
+		btnMulti.addMouseMotionListener(listener);
+		
 		btnDivision = new JButton("/");
+		btnDivision.setTransferHandler(new ValueExportTransferHandler("/"));
+		btnDivision.addMouseMotionListener(listener);
 	}
 
 }
