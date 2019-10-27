@@ -10,33 +10,19 @@ import java.awt.event.MouseEvent;
 
 public class CalculatorOperationPanel extends JPanel {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7448758552520728876L;
 	private JPanel groupOperandBtn;
 	private JPanel groupOperationBtn;
-	/*
-	private JButton btnNum1;
-	private JButton btnNum2;
-	private JButton btnNum3;
-	private JButton btnNum4;
-	private JButton btnNum5;
-	private JButton btnNum6;
-	private JButton btnNum7;
-	private JButton btnNum8;
-	private JButton btnNum9;*/
 	private JButton btnPlus;
 	private JButton btnMinus;
 	private JButton btnMulti;
 	private JButton btnDivision;
-	private JTextArea dragPanel;
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	/**
-	 * Create the panel.
-	 */
+	private JTextArea textArea;
 	public CalculatorOperationPanel(JTextArea dPanel) {
-		this.dragPanel = dPanel;
+		this.textArea = dPanel;
 		init();
 	}
 	
@@ -69,19 +55,19 @@ public class CalculatorOperationPanel extends JPanel {
 		for(int i = 1; i <= 9; i++) {
 			JButton btnOperand = new JButton(Integer.toString(i));
 			btnOperand.setForeground(Color.cyan);
-			//btnOperand.setBackground(Color.cyan);
 			groupOperandBtn.add(btnOperand);
 			btnOperand.setTransferHandler(new ValueExportTransferHandler(btnOperand.getText()));
 			btnOperand.addMouseMotionListener(new MouseMotionAdapter() {
 				@Override
 				public void mouseDragged(MouseEvent e) {
 					JButton btn = (JButton)e.getSource();
-					//btn.setLocation(new Point(e.getX(), e.getY()));
                     TransferHandler handle = btn.getTransferHandler();
                     handle.exportAsDrag(btn, e, TransferHandler.COPY);
+                    //System.out.println(textArea.getText());
 				}
 			});
 		}
+		
 		btnPlus = new JButton("+");
 		btnMinus = new JButton("-");
 		btnMulti = new JButton("*");
