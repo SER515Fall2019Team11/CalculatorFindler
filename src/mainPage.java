@@ -30,7 +30,7 @@ boolean m_bExit = false;
 	public Login() {
 		try {
 			jbInit();
-			setSize(300, 300);
+			setSize(500, 500);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
