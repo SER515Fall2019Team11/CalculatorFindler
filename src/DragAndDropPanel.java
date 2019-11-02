@@ -26,8 +26,6 @@ public class DragAndDropPanel extends JPanel {
 		init();
 	}
 	public void init() {
-		//this.setBorder(BorderFactory.createTitledBorder("Drag & Drop Area"));
-		//this.setBackground(new Color(255,255,204));
 		this.setBackground(Color.cyan);
 		text = new JTextArea();
 		text.setColumns(20);
