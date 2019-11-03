@@ -12,7 +12,9 @@ import javax.swing.table.DefaultTableCellRenderer;
 
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.awt.Font;
 
+@SuppressWarnings("unused")
 public class QuestionDisplayPanel extends JPanel {
 	private JScrollPane scroll;
 	private JFrame frame;
@@ -28,6 +30,7 @@ public class QuestionDisplayPanel extends JPanel {
 	public QuestionDisplayPanel(JFrame frame) {
 		this.frame = frame;
 		init();
+		
 		addComponentListener(new ComponentAdapter() {
 			@Override
 			public void componentResized(ComponentEvent e) {
@@ -35,6 +38,7 @@ public class QuestionDisplayPanel extends JPanel {
 				System.out.println(frame.getWidth());
 			}
 		});
+		
 		this.setBorder(BorderFactory.createTitledBorder("Show Question"));
 	}
 	
@@ -45,14 +49,13 @@ public class QuestionDisplayPanel extends JPanel {
 		this.setBackground(Color.cyan);
 	}
 	private void TableAutoResize() {
-		table.setPreferredScrollableViewportSize(new Dimension(this.frame.getWidth() / 3, this.frame.getHeight()));
+		table.setPreferredScrollableViewportSize(new Dimension(this.frame.getWidth() / 3 - 10, this.frame.getHeight()));
 		//table.setBackground(new Color(255,255,204));
 		table.setBackground(Color.cyan);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		scroll.setViewportView(table);
 		scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-		table.setFillsViewportHeight(true);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 	}
 	private void addTable() {
@@ -62,6 +65,8 @@ public class QuestionDisplayPanel extends JPanel {
 		
 		String []colName = {"No.", "Question", "Answer"};
 		table = new JTable(data, colName);
+		table.setFont(new Font("Rockwell", Font.PLAIN, 21));
+		table.setFillsViewportHeight(true);
 		//table.getTableHeader().setBackground(new Color(255,255,204));
 		table.getTableHeader().setBackground(Color.cyan);
 		table.getTableHeader().setForeground(Color.BLACK);

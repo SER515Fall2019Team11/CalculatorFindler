@@ -8,6 +8,7 @@ import java.awt.dnd.DnDConstants;
 import javax.swing.JComponent;
 import javax.swing.TransferHandler;
 
+@SuppressWarnings("serial")
 public class ValueExportTransferHandler extends TransferHandler{
 
         public static final DataFlavor SUPPORTED_DATE_FLAVOR = DataFlavor.stringFlavor;

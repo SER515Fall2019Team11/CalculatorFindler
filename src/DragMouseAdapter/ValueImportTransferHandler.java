@@ -8,6 +8,7 @@ import java.awt.datatransfer.Transferable;
 import javax.swing.JLabel;
 import javax.swing.TransferHandler;
 
+@SuppressWarnings("serial")
 public class ValueImportTransferHandler extends TransferHandler{
 	
 	public static final DataFlavor SUPPORTED_DATE_FLAVOR = DataFlavor.stringFlavor;

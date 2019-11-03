@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import java.awt.Font;
 
 public class DragAndDropPanel extends JPanel {
 	private JTextArea text;
@@ -30,6 +31,7 @@ public class DragAndDropPanel extends JPanel {
 		//this.setBackground(new Color(255,255,204));
 		this.setBackground(Color.cyan);
 		text = new JTextArea();
+		text.setFont(new Font("Rockwell", Font.PLAIN, 26));
 		text.setColumns(20);
 		text.setRows(4);
 		text.setBorder(BorderFactory.createTitledBorder("Drag & Drop Area"));
@@ -39,10 +41,13 @@ public class DragAndDropPanel extends JPanel {
 		resultPanel.setBorder(BorderFactory.createTitledBorder("Result"));
 		resultPanel.setBackground(Color.cyan);
 		result = new JLabel("result will show here");
+		result.setFont(new Font("Tahoma", Font.PLAIN, 28));
 		resultPanel.add(result);
 		operation = new JPanel();
 		btn1 = new JButton("btn1");
+		btn1.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		btn2 = new JButton("btn2");
+		btn2.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		
 		operation.add(btn1);
 		operation.add(btn2);
