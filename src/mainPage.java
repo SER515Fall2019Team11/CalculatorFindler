@@ -5,25 +5,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 
 import javax.swing.*;
-public class mainPage extends JFrame {
-	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					mainPage frame = new mainPage();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+public class mainPage extends JDialog {
 	/**
 	 * Create the frame.
 	 */
@@ -41,10 +23,6 @@ public class mainPage extends JFrame {
 	private UserInfo.USER_TYPE UserType = UserInfo.USER_TYPE.Student; 
 	
 	public mainPage() {
-		
-	}
-	
-	public void Login() {
 		try {
 			jbInit();
 			setSize(500, 500);
