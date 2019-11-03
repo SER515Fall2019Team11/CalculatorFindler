@@ -1,23 +1,33 @@
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 import javax.swing.*;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.JButton;
-import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.awt.event.ActionEvent;
-import java.awt.*;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-
 public class mainPage extends JFrame {
-boolean m_bExit = false;
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					mainPage frame = new mainPage();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	boolean m_bExit = false;
 	JLabel jLabel1 = new JLabel();
 	JLabel jLabel2 = new JLabel();
 	JButton loginButton = new JButton();
@@ -28,8 +38,12 @@ boolean m_bExit = false;
 	JRadioButton InstructorRadio = new JRadioButton();
 	ButtonGroup buttonGroup1 = new ButtonGroup();
 	private String UserBox = null;
-	private USER_TYPE UserType = USER_TYPE.Student; 
-
+	private UserInfo.USER_TYPE UserType = UserInfo.USER_TYPE.Student; 
+	
+	public mainPage() {
+		
+	}
+	
 	public void Login() {
 		try {
 			jbInit();
@@ -85,12 +99,12 @@ boolean m_bExit = false;
 		try {
 			if (StudentRadio.isSelected() == true)//// student
 			{
-				UserType = USER_TYPE.Student; /// 0 for student
+				UserType = UserInfo.USER_TYPE.Student; /// 0 for student
 				file = new BufferedReader(new FileReader("StuInfo.txt"));
 			} else// instructor
 			{
-				UserType = USER_TYPE.Instructor; // 1 for instructor
-				file = new BufferedReader(new FileReader("InsInfor.txt"));
+				UserType = UserInfo.USER_TYPE.Instructor; // 1 for instructor
+				file = new BufferedReader(new FileReader("TeacherInfo.txt"));
 			}
 			UserBox = UserNameText.getText();
 			String PasswordBox = new String(PasswordText.getPassword());
@@ -103,7 +117,7 @@ boolean m_bExit = false;
 					LoginName = UserName;
 			}
 			if (LoginName != null) {
-				this.hide();
+				this.setVisible(false);
 			}
 		} catch (Exception ee) {
 			;
@@ -126,7 +140,7 @@ boolean m_bExit = false;
 	}
 
 	
-	public USER_TYPE GetUserType() {
+	public UserInfo.USER_TYPE GetUserType() {
 		return UserType;
 	}
 
@@ -136,7 +150,7 @@ boolean m_bExit = false;
 
 	void buttonExit_actionPerformed(ActionEvent e) {
 		m_bExit = true;
-		hide();
+		setVisible(false);
 	}
 }
 
