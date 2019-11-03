@@ -1,6 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
+import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -9,7 +10,9 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.awt.event.ActionEvent;
+import java.awt.*;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
@@ -27,7 +30,7 @@ boolean m_bExit = false;
 	private String UserBox = null;
 	private USER_TYPE UserType = USER_TYPE.Student; 
 
-	public Login() {
+	public void Login() {
 		try {
 			jbInit();
 			setSize(500, 500);
@@ -136,4 +139,4 @@ boolean m_bExit = false;
 		hide();
 	}
 }
-}
+
