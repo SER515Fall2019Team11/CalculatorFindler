@@ -81,6 +81,8 @@ public class CalculatorOperationPanel extends JPanel {
 			//btnOperand.setForeground(Color.cyan);
 			//btnOperand.setBackground(Color.cyan);
 			groupOperandBtn.add(btnOperand);
+			btnOperand.setTransferHandler(new ValueExportTransferHandler(Integer.toString(i)));
+			btnOperand.addMouseMotionListener(listener);
 		}
 		btnPlus = new JButton("+");
 		
