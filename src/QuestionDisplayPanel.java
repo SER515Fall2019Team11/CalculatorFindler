@@ -62,7 +62,6 @@ public class QuestionDisplayPanel extends JPanel {
 		
 		String []colName = {"No.", "Question", "Answer"};
 		table = new JTable(data, colName);
-		//table.getTableHeader().setBackground(new Color(255,255,204));
 		table.getTableHeader().setBackground(Color.cyan);
 		table.getTableHeader().setForeground(Color.BLACK);
 		/*
