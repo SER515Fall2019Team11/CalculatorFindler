@@ -2,6 +2,7 @@
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
+import java.sql.Statement;
 import java.util.Properties;
 
 public class DatabaseConn {
@@ -65,5 +66,54 @@ public class DatabaseConn {
 			return ret;
 		}
 
+	}
+	public boolean addQuestion(Connection conn, String sql) {
+		Statement stmt = null;
+		try {
+			stmt = conn.createStatement();
+			return (stmt.executeUpdate(sql) > 0);
+		} catch (Exception sqe) {
+			sqe.printStackTrace();
+			return false;
+		} finally {
+			try {
+				if (stmt != null) { stmt.close(); }
+			} catch (Exception e2) { e2.printStackTrace(); }
+			finally {
+				try {
+					if (conn != null) { conn.close(); }
+				} catch (Exception e3) { e3.printStackTrace(); }
+			}
+		}
+	}
+	public boolean deleteQuestion(Connection conn, String sql) {
+		Statement stmt1 = null;
+		Statement stmt2 = null;
+		boolean ret = false;
+		try {
+			conn.setAutoCommit(false);
+			//String delete1 = "delete from phoneEntry where phone = '" + phoneNum + "'";
+			stmt1 = conn.createStatement();
+			if(ret = (stmt1.executeUpdate(sql) > 0)) {
+				
+				//String delete2 = "delete from phoneBooks where phone = '" + phoneNum + "'";
+				stmt2 = conn.createStatement();
+				stmt2.executeUpdate(sql);
+			}
+			conn.commit();
+			return ret;
+		} catch (Exception sqe) {
+			sqe.printStackTrace();
+			return false;
+		} finally {
+			try {
+				if (stmt1 != null) { stmt1.close(); }
+			} catch (Exception e2) { e2.printStackTrace(); }
+			finally {
+				try {
+					if (conn != null) { conn.close(); }
+				} catch (Exception e3) { e3.printStackTrace(); }
+			}
+		}
 	}
 }
