@@ -1,5 +1,4 @@
 import java.awt.EventQueue;
-import java.awt.GridLayout;
 
 import javax.swing.JFrame;
 
@@ -34,19 +33,8 @@ public class calculator {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		
 		frame = new JFrame();
-		frame.setBounds(100, 100, 1200, 300);
-		DragAndDropPanel dPanel = new DragAndDropPanel();
-		CalculatorOperationPanel operationPanel = new CalculatorOperationPanel(dPanel);
-		QuestionDisplayPanel qPanel = new QuestionDisplayPanel(frame);
-		
-		frame.add(operationPanel);
-		frame.add(dPanel);
-		frame.add(qPanel);
-		
-		frame.setLayout(new GridLayout(1,3));
-		
+		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
