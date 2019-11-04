@@ -1,3 +1,4 @@
+package UI;
 import java.awt.Color;
 import java.awt.GridLayout;
 
@@ -15,6 +16,7 @@ public class DragAndDropPanel extends JPanel {
 	private JPanel operation;
 	private JButton btn1;
 	private JButton btn2;
+	private static int res = 0;
 	/**
 	 * 
 	 */
@@ -61,5 +63,31 @@ public class DragAndDropPanel extends JPanel {
 		this.setLayout(new GridLayout(3, 1));
 		
 	}
-
+	
+	public void calculate() {
+		String eqn = text.getText();
+		if(eqn.length() == 1) {
+			res = Integer.parseInt(eqn);
+			result.setText("Your equation is : "+eqn);
+		}
+		else if(eqn.charAt(eqn.length()-1) == '+' || eqn.charAt(eqn.length()-1) == '-' || eqn.charAt(eqn.length()-1) == '/' || eqn.charAt(eqn.length()-1) == '*'){
+			result.setText("Your equation is : "+eqn);
+		}
+		else {
+			if(eqn.charAt(eqn.length()-2) == '+') {
+				res = res + ( Character.getNumericValue(eqn.charAt(eqn.length()-1)));
+				result.setText("Result = "+Integer.toString(res));
+			}
+			
+			else if(eqn.charAt(eqn.length()-2) == '-') {
+				res = res - ( Character.getNumericValue(eqn.charAt(eqn.length()-1))) ;
+				result.setText("Result = "+Integer.toString(res));
+			}
+			
+			else if(eqn.charAt(eqn.length()-2) == '*') {
+				res = res * ( Character.getNumericValue(eqn.charAt(eqn.length()-1)));
+				result.setText("Result = "+Integer.toString(res));
+			}
+		}
+	}
 }

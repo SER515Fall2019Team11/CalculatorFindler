@@ -1,3 +1,4 @@
+package UI;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -117,7 +118,7 @@ public class CalculatorOperationPanel extends JPanel {
 					}
 				}
 			});*/
-			btnOperand.setTransferHandler(new ValueExportTransferHandler(Integer.toString(i)));
+			btnOperand.setTransferHandler(new ValueExportTransferHandler(Integer.toString(i), dragPanel));
 			btnOperand.addMouseMotionListener(listener);
 			/*btnOperand.addMouseListener(new MouseAdapter() {
 				@Override
@@ -131,7 +132,7 @@ public class CalculatorOperationPanel extends JPanel {
 		btnPlus = new JButton("+");
 		btnPlus.setFont(new Font("Rockwell", Font.PLAIN, 36));
 		
-		btnPlus.setTransferHandler(new ValueExportTransferHandler("+"));
+		btnPlus.setTransferHandler(new ValueExportTransferHandler("+", dragPanel));
 		btnPlus.addMouseMotionListener(listener);
 		
 		/*
@@ -160,17 +161,17 @@ public class CalculatorOperationPanel extends JPanel {
 		
 		btnMinus = new JButton("-");
 		btnMinus.setFont(new Font("Rockwell", Font.PLAIN, 36));
-		btnMinus.setTransferHandler(new ValueExportTransferHandler("-"));
+		btnMinus.setTransferHandler(new ValueExportTransferHandler("-", dragPanel));
 		btnMinus.addMouseMotionListener(listener);
 		
 		btnMulti = new JButton("*");
 		btnMulti.setFont(new Font("Rockwell", Font.PLAIN, 36));
-		btnMulti.setTransferHandler(new ValueExportTransferHandler("*"));
+		btnMulti.setTransferHandler(new ValueExportTransferHandler("*", dragPanel));
 		btnMulti.addMouseMotionListener(listener);
 		
 		btnDivision = new JButton("/");
 		btnDivision.setFont(new Font("Rockwell", Font.PLAIN, 36));
-		btnDivision.setTransferHandler(new ValueExportTransferHandler("/"));
+		btnDivision.setTransferHandler(new ValueExportTransferHandler("/", dragPanel));
 		btnDivision.addMouseMotionListener(listener);
 	}
 
