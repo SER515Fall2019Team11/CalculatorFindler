@@ -173,6 +173,7 @@ public class CalculatorOperationPanel extends JPanel {
 		btnDivision.setFont(new Font("Rockwell", Font.PLAIN, 36));
 		btnDivision.setTransferHandler(new ValueExportTransferHandler("/", dragPanel));
 		btnDivision.addMouseMotionListener(listener);
+	
 	}
 
 }

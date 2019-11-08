@@ -1,7 +1,13 @@
 package UI;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Stack;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -10,13 +16,17 @@ import javax.swing.JTextArea;
 import java.awt.Font;
 
 public class DragAndDropPanel extends JPanel {
-	private JTextArea text;
-	private JLabel result;
+	public JTextArea text, result;
+	//private JLabel result;
 	private JPanel resultPanel;
 	private JPanel operation;
 	private JButton btn1;
 	private JButton btn2;
-	private static int res = 0;
+	//private static int res = 0;
+	//private int eqn_counter_start;
+	//private char operator = '`';
+	//private int flag;
+	
 	/**
 	 * 
 	 */
@@ -42,11 +52,25 @@ public class DragAndDropPanel extends JPanel {
 		resultPanel = new JPanel();
 		resultPanel.setBorder(BorderFactory.createTitledBorder("Result"));
 		resultPanel.setBackground(Color.cyan);
-		result = new JLabel("result will show here");
-		result.setFont(new Font("Tahoma", Font.PLAIN, 28));
+		
+		//result = new JLabel("Result will show here");
+		//result.setFont(new Font("Tahoma", Font.PLAIN, 28));
+		//resultPanel.add(result);
+		
+		//Trying JTextArea instead of Jlabel to display result
+		result = new JTextArea();
+		result.setFont(new Font("Rockwell", Font.PLAIN, 26));
+		result.setColumns(19);
+		result.setRows(4);
+		//result.setBorder(BorderFactory.createTitledBorder("Drag & Drop Area"));
+		result.setBackground(Color.cyan);
+		result.setEditable(false);
+		result.setLineWrap(true);
+		result.setWrapStyleWord(true);
 		resultPanel.add(result);
+		
 		operation = new JPanel();
-		btn1 = new JButton("btn1");
+		btn1 = new JButton("CLEAR");
 		btn1.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		btn2 = new JButton("btn2");
 		btn2.setFont(new Font("Tahoma", Font.PLAIN, 26));
@@ -62,32 +86,137 @@ public class DragAndDropPanel extends JPanel {
 		this.add(operation);
 		this.setLayout(new GridLayout(3, 1));
 		
+		btn1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//res = 0;
+				//operator = '`';
+				text.setText(null);
+				result.setText("Result will show here");
+			}
+		});
 	}
 	
-	public void calculate() {
-		String eqn = text.getText();
-		if(eqn.length() == 1) {
+	public void calculate(String eqn) {
+		/*String eqn = text.getText();
+		if(eqn.length() == 1 && (eqn!="*" || eqn!="/")) {
+			eqn_counter_start = 0;
 			res = Integer.parseInt(eqn);
+			flag = res;
 			result.setText("Your equation is : "+eqn);
 		}
 		else if(eqn.charAt(eqn.length()-1) == '+' || eqn.charAt(eqn.length()-1) == '-' || eqn.charAt(eqn.length()-1) == '/' || eqn.charAt(eqn.length()-1) == '*'){
+			if(eqn.charAt(eqn.length()-1) == '+') 
+				operator = '+';
+			else if(eqn.charAt(eqn.length()-1) == '-')
+				operator = '-';
+			res = flag;
+			flag = res;
+			eqn_counter_start = eqn.length();
+			//num1 = Integer.parseInt(eqn.subSequence(eqn_counter_start, eqn_counter_end).toString());
 			result.setText("Your equation is : "+eqn);
 		}
 		else {
-			if(eqn.charAt(eqn.length()-2) == '+') {
-				res = res + ( Character.getNumericValue(eqn.charAt(eqn.length()-1)));
-				result.setText("Result = "+Integer.toString(res));
+			if(operator == '`') {
+				res = Integer.parseInt(eqn);
+				flag = res;
+				result.setText("Result = "+eqn);
+			}
+			else if(operator == '+') {
+				flag = res + Integer.parseInt(eqn.substring(eqn_counter_start).toString());
+				result.setText("Result = "+Integer.toString(flag));
 			}
 			
-			else if(eqn.charAt(eqn.length()-2) == '-') {
-				res = res - ( Character.getNumericValue(eqn.charAt(eqn.length()-1))) ;
-				result.setText("Result = "+Integer.toString(res));
+			else if(operator == '-') {
+				flag = res - Integer.parseInt(eqn.substring(eqn_counter_start).toString());
+				result.setText("Result = "+Integer.toString(flag));
 			}
 			
 			else if(eqn.charAt(eqn.length()-2) == '*') {
 				res = res * ( Character.getNumericValue(eqn.charAt(eqn.length()-1)));
 				result.setText("Result = "+Integer.toString(res));
 			}
+		}
+	*/
+		
+		//String eqn = text.getText();
+		/*char[] tokens = eqn.toCharArray();
+		
+		Stack<Integer> values = new Stack<Integer>();
+		Stack<Character> operators = new Stack<Character>();
+		
+		for(int i=0; i<tokens.length; i++) {
+			//if(tokens[i]== ' ')
+			//	continue;
+			if(tokens[i]>='0' && tokens[i]<='9') {
+				StringBuffer sbuf = new StringBuffer();
+				while (i < tokens.length && tokens[i] >= '0' && tokens[i] <= '9')
+                    sbuf.append(tokens[i++]);
+                values.push(Integer.parseInt(sbuf.toString()));
+			}
+			else if (tokens[i] == ')')
+            {
+                while (operators.peek() != '(')
+                  values.push(applyOp(operators.pop(), values.pop(), values.pop()));
+                operators.pop();
+            }
+			else if (tokens[i] == '+' || tokens[i] == '-' ||
+                    tokens[i] == '*' || tokens[i] == '/')
+           {
+               // While top of 'operators' has same or greater precedence to current
+               // token, which is an operator. Apply operator on top of 'ops'
+               // to top two elements in values stack
+               while (!operators.empty() && precedence(tokens[i], operators.peek()))
+                 values.push(applyOp(operators.pop(), values.pop(), values.pop()));
+
+               // Push current token to 'operators'.
+               operators.push(tokens[i]);
+           }
+		}
+		
+		while (!operators.empty())
+            values.push(applyOp(operators.pop(), values.pop(), values.pop()));
+
+        // Top of 'values' contains result, return it
+        result.setText(Integer.toString(values.pop())); 
+	}
+	
+	
+	public boolean precedence(char op1, char op2) {
+		if (op2 == '(' || op2 == ')')
+            return false;
+        if ((op1 == '*' || op1 == '/') && (op2 == '+' || op2 == '-'))
+            return false;
+        else
+            return true;
+	}
+
+	public int applyOp(char op, int b, int a) {
+		switch (op)
+        {
+        case '+':
+            return a + b;
+        case '-':
+            return a - b;
+        case '*':
+            return a * b;
+        case '/':
+            if (b == 0)
+                throw new
+                UnsupportedOperationException("Cannot divide by zero");
+            return a / b;
+        }
+        return 0;
+	}*/
+		
+		ScriptEngineManager mgr = new ScriptEngineManager();
+	    ScriptEngine engine = mgr.getEngineByName("JavaScript");
+	    //String foo = "40+2/3*45";
+	    try {
+			result.setText(engine.eval(eqn).toString());
+		} catch (ScriptException e) {
+			// TODO Auto-generated catch block
+			//System.out.println(e.getCause());
+			result.setText("Enter a number after operator!");
 		}
 	}
 }
