@@ -18,10 +18,12 @@ import java.awt.Font;
 public class DragAndDropPanel extends JPanel {
 	public JTextArea text, result;
 	//private JLabel result;
+	private JPanel dragAndDrop;
 	private JPanel resultPanel;
 	private JPanel operation;
 	private JButton btn1;
 	private JButton btn2;
+	private JButton dropArea;
 	//private static int res = 0;
 	//private int eqn_counter_start;
 	//private char operator = '`';
@@ -42,17 +44,33 @@ public class DragAndDropPanel extends JPanel {
 		//this.setBorder(BorderFactory.createTitledBorder("Drag & Drop Area"));
 		//this.setBackground(new Color(255,255,204));
 		this.setBackground(Color.cyan);
+		
+		/***
+		 * add jpanel and jbutton to the drag and drop area 
+		 */
+		dragAndDrop = new JPanel();
+		dragAndDrop.setBorder(BorderFactory.createTitledBorder("Drag & Drop Area"));
+		dragAndDrop.setBackground(Color.cyan);
+		
+		dropArea = new JButton("Drop Off Area");
+		dropArea.setBackground(Color.cyan);
+		dropArea.setOpaque(true);
+		dropArea.setBorderPainted(false);
+		
 		text = new JTextArea();
 		text.setFont(new Font("Rockwell", Font.PLAIN, 26));
 		text.setColumns(20);
 		text.setRows(4);
-		text.setBorder(BorderFactory.createTitledBorder("Drag & Drop Area"));
+		text.setBorder(BorderFactory.createTitledBorder(""));
 		text.setBackground(Color.cyan);
-		
 		resultPanel = new JPanel();
 		resultPanel.setBorder(BorderFactory.createTitledBorder("Result"));
 		resultPanel.setBackground(Color.cyan);
+	
 		
+		dragAndDrop.add(text);
+		dragAndDrop.add(dropArea);
+		dragAndDrop.setLayout(new GridLayout(1, 2));
 		//result = new JLabel("Result will show here");
 		//result.setFont(new Font("Tahoma", Font.PLAIN, 28));
 		//resultPanel.add(result);
@@ -81,7 +99,8 @@ public class DragAndDropPanel extends JPanel {
 		operation.setBackground(Color.cyan);
 		operation.setLayout(new GridLayout(1, 2));
 		
-		this.add(text);
+		//this.add(text);
+		this.add(dragAndDrop);
 		this.add(resultPanel);
 		this.add(operation);
 		this.setLayout(new GridLayout(3, 1));
@@ -216,7 +235,12 @@ public class DragAndDropPanel extends JPanel {
 		} catch (ScriptException e) {
 			// TODO Auto-generated catch block
 			//System.out.println(e.getCause());
-			result.setText("Enter a number after operator!");
+			//result.setText("Enter a number after operator!");
+			String error = "ERROR: " + "an operand is expected after the operator";
+			result.setText(error);
+			System.out.println(e.getColumnNumber());
+			System.out.println(e.getMessage());
+			System.out.println(e.toString());
 		}
 	}
 }
