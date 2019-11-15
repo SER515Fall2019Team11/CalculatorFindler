@@ -79,7 +79,7 @@ public class QuestionDisplayPanel extends JPanel {
 		}
 		ImplementationService imp = new ImplementationService(conn);
 		Object [][]data = imp.getAllQuestion();
-		System.out.println(data.length);
+		//System.out.println(data.length);
 		String []colName = {"No.", "Question", "Answer"};
 		table = new JTable(data, colName);
 		//table.setFont(new Font("Rockwell", Font.PLAIN, 21));
