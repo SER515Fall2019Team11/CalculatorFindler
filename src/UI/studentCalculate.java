@@ -45,7 +45,7 @@ public class studentCalculate extends JFrame {
 		
 		setLayout(new GridLayout(1,3));
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 }

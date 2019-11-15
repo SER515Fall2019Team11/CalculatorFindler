@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Implementation.ImplementationService;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JTextArea;
@@ -19,6 +22,11 @@ import java.awt.event.ActionEvent;
 import java.io.FileWriter;
 import java.nio.file.*;
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 
 
@@ -27,6 +35,9 @@ public class teacherInput extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField questionNum;
+	private final String url = "jdbc:mysql://localhost:3306/mydb?useSSL=false";
+	private String user = "root";
+	private String password = "1234";
 
 	/**
 	 * Launch the application.
@@ -49,7 +60,7 @@ public class teacherInput extends JFrame {
 	 */
 	public teacherInput() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 640, 360);
+		setBounds(100, 100, 1400, 500);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.CYAN);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -77,6 +88,7 @@ public class teacherInput extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				mainPage main = new mainPage();
 				main.setVisible(true);
+				setVisible(false);
 			}
 		});
 		
@@ -84,7 +96,7 @@ public class teacherInput extends JFrame {
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try{
-					Path currentRelativePath = Paths.get("");
+					/*Path currentRelativePath = Paths.get("");
 					String currentDir = currentRelativePath.toAbsolutePath().toString();
 					FileWriter fw=new FileWriter(currentDir + "\\testout.txt",true); 
 					fw.write("Question #");
@@ -97,9 +109,17 @@ public class teacherInput extends JFrame {
 					fw.write(answerText.getText());
 					fw.write("\n");   
 					
-					fw.close();    
+					fw.close();  */
+					DatabaseConn db = new DatabaseConn(url, user, password);
+					Connection conn = db.getMySqlConnection();
+					Statement statement = conn.createStatement();
+					ImplementationService imp = new ImplementationService(conn);
+					Object [][]data = imp.getAllQuestion();
+					String id = Integer.toString(data.length + 1);
+
+					statement.executeUpdate("insert into question values('" + id + "', '" + questionText.getText() + "', '" + answerText.getText() + "')");
+					System.out.println("Successfully added the question");
 				}catch(Exception ex){System.out.println(e);}    
-				System.out.println("Successfully added to file");
 			}
 		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);

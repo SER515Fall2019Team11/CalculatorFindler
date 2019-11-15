@@ -73,7 +73,7 @@ public class CalculatorOperationPanel extends JPanel {
 		groupOperandBtn.add(btnNum7);
 		groupOperandBtn.add(btnNum8);
 		groupOperandBtn.add(btnNum9);*/
-		groupOperandBtn.setLayout(new GridLayout(3,3));
+		groupOperandBtn.setLayout(new GridLayout(4,3));
 		groupOperandBtn.setBorder(BorderFactory.createTitledBorder("Operand"));
 		groupOperandBtn.setBackground(Color.cyan);
 		
@@ -97,37 +97,15 @@ public class CalculatorOperationPanel extends JPanel {
 	}
 	private void btnInit() {
 		DragMouseAdapter listener = new DragMouseAdapter();
-		for(int i = 1; i <= 9; i++) {
+		for(int i = 0; i <= 9; i++) {
 			JButton btnOperand = new JButton(Integer.toString(i));
-			//btnOperand.setForeground(Color.cyan);
-			//btnOperand.setBackground(Color.cyan);
+			btnOperand.setBackground(Color.cyan);
+			btnOperand.setOpaque(true);
+			btnOperand.setBorderPainted(false);
 			groupOperandBtn.add(btnOperand);
 			btnOperand.setFont(new Font("Rockwell", Font.PLAIN, 28));
-			/*
-			btnOperand.addMouseListener(new MouseAdapter() {//add click event listener
-				@Override
-				public void mouseClicked(MouseEvent e) {
-					Object obj = e.getSource();
-					if(obj instanceof JButton) {
-						JButton btn = (JButton)obj;
-						JTextField textField = new JTextField(btn.getText());
-						textField.setDragEnabled(true);
-						dragPanel.add(textField);
-						dragPanel.revalidate();
-						System.out.println(btn.getText());
-					}
-				}
-			});*/
 			btnOperand.setTransferHandler(new ValueExportTransferHandler(Integer.toString(i), dragPanel));
 			btnOperand.addMouseMotionListener(listener);
-			/*btnOperand.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseReleased(MouseEvent e) {
-					JButton btn = (JButton)e.getSource();
-					System.out.println(btn.getText());
-					dragPanel.setText(btn.getText());
-				}
-			});*/ //Testing for Jframe
 		}
 		btnPlus = new JButton("+");
 		btnPlus.setFont(new Font("Rockwell", Font.PLAIN, 36));
@@ -173,6 +151,7 @@ public class CalculatorOperationPanel extends JPanel {
 		btnDivision.setFont(new Font("Rockwell", Font.PLAIN, 36));
 		btnDivision.setTransferHandler(new ValueExportTransferHandler("/", dragPanel));
 		btnDivision.addMouseMotionListener(listener);
+	
 	}
 
 }

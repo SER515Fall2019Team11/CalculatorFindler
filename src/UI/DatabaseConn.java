@@ -31,8 +31,8 @@ public class DatabaseConn {
 		try
 		{
 			/* Register for jdbc driver class. */
-			//Class.forName("com.mysql.cj.jdbc.Driver");
-			Class.forName(driver);
+			Class.forName("com.mysql.jdbc.Driver");
+			//Class.forName(driver);
 			/* Get the Connection object. */
 			ret = DriverManager.getConnection(connUrl, username , password);
 			
@@ -68,6 +68,7 @@ public class DatabaseConn {
 		}
 
 	}
+	/*
 	public boolean addQuestion(Connection conn, String sql) {
 		Statement stmt = null;
 		try {
@@ -116,5 +117,5 @@ public class DatabaseConn {
 				} catch (Exception e3) { e3.printStackTrace(); }
 			}
 		}
-	}
+	}*/
 }
