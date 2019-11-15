@@ -6,13 +6,19 @@ import java.awt.FlowLayout;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
+import Implementation.ImplementationService;
+
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.awt.Font;
 
 @SuppressWarnings("unused")
@@ -20,6 +26,9 @@ public class QuestionDisplayPanel extends JPanel {
 	private JScrollPane scroll;
 	private JFrame frame;
 	private JTable table;
+	private final String url = "jdbc:mysql://localhost:3306/mydb?useSSL=false";
+	private String user = "root";
+	private String password = "Kuan890618";
 	/**
 	 * 
 	 */
@@ -31,7 +40,7 @@ public class QuestionDisplayPanel extends JPanel {
 	public QuestionDisplayPanel(JFrame frame) {
 		this.frame = frame;
 		init();
-		
+
 		addComponentListener(new ComponentAdapter() {
 			@Override
 			public void componentResized(ComponentEvent e) {
@@ -39,10 +48,10 @@ public class QuestionDisplayPanel extends JPanel {
 				System.out.println(frame.getWidth());
 			}
 		});
-		
+
 		this.setBorder(BorderFactory.createTitledBorder("Show Question"));
 	}
-	
+
 	private void init() {
 		scroll = new JScrollPane();
 		addTable();
@@ -60,25 +69,26 @@ public class QuestionDisplayPanel extends JPanel {
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 	}
 	private void addTable() {
-		Object [][]data = { {"1", "5+3", "8"},
-							{"2", "7*8", "56"},
-							{"3", "22+15*8", "144"}};
-		
+		//Object [][]data;
+
+		DatabaseConn db = new DatabaseConn(url, user, password);
+		Connection conn = db.getMySqlConnection();
+		if(conn == null) {
+			JOptionPane.showMessageDialog(null, "database connection failed");
+			return;
+		}
+		ImplementationService imp = new ImplementationService(conn);
+		Object [][]data = imp.getAllQuestion();
 		String []colName = {"No.", "Question", "Answer"};
 		table = new JTable(data, colName);
-		table.setFont(new Font("Rockwell", Font.PLAIN, 21));
+		//table.setFont(new Font("Rockwell", Font.PLAIN, 21));
 		table.setFillsViewportHeight(true);
 		//table.getTableHeader().setBackground(new Color(255,255,204));
 		table.getTableHeader().setBackground(Color.cyan);
 		table.getTableHeader().setForeground(Color.BLACK);
-		/*
-		DefaultTableCellRenderer rendar1 = new DefaultTableCellRenderer();
-	    rendar1.setForeground(Color.RED);
-	    for(int i = 0; i < table.getColumnCount(); i++) {
-	    	table.getColumnModel().getColumn(i).setCellRenderer(rendar1);
-	    }*/
 		TableAutoResize();
 		this.add(scroll, BorderLayout.CENTER);
+
 	}
 
 }
