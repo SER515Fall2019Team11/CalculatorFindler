@@ -4,8 +4,13 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.List;
 
+/***
+ * 
+ * @author hzhan193
+ * date create - 11/14/2019
+ * date modified - 11/19/2019
+ */
 public class ImplementationService {
 	private Connection conn;
 
@@ -17,8 +22,6 @@ public class ImplementationService {
 		try {
 			Object [][]data;
 			int row = 0;
-			//List <Object> record = new ArrayList<>();
-			//List<PhoneEntry> list = new ArrayList<>();
 			Statement stmt = null;
 			ResultSet rs = null;
 			String query = "select id, question, answer from question";
@@ -31,13 +34,7 @@ public class ImplementationService {
 			if(rs.last()) {
 				row = rs.getRow();
 			}
-			//System.out.println(row);
 			rs.beforeFirst();
-			//row = rs.getRow();
-			//System.out.println(row);
-			//int row = rs.getFetchSize();
-			//System.out.println(row);
-			//System.out.println(rs.getRow());
 			data = new Object[row][3];
 
 			while (rs.next()){

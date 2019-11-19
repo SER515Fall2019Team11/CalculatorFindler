@@ -90,15 +90,7 @@ public class DragAndDropPanel extends JPanel {
 		operation = new JPanel();
 		btn1 = new JButton("CLEAR");
 		btn1.setFont(new Font("Tahoma", Font.PLAIN, 26));
-		btn2 = new JButton("RETURN");
-		btn2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				mainPage main = new mainPage();
-				main.setVisible(true);
-				studentCalculate stu = new studentCalculate();
-				stu.dispose();
-			}
-		});
+		btn2 = new JButton("btn2");
 		btn2.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		
 		operation.add(btn1);
