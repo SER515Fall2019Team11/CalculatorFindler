@@ -30,22 +30,22 @@ public class ImplementationService {
 			rs = stmt.executeQuery(query);
 			String id = null;
 			String question = null;
-			String answer = null;
+			//String answer = null;
 			if(rs.last()) {
 				row = rs.getRow();
 			}
 			rs.beforeFirst();
-			data = new Object[row][3];
+			data = new Object[row][2];
 
 			while (rs.next()){
 				int index = rs.getRow() -1;
 				id = rs.getString(1);
 				question = rs.getString(2);
-				answer = rs.getString(3);
+				//answer = rs.getString(3);
 				data[index][0] = id;
 				data[index][1] = question;
-				data[index][2] = answer;
-				System.out.println(id + " " + question + " " + answer);
+				//data[index][2] = answer;
+				//System.out.println(id + " " + question + " " + answer);
 			}
 			stmt.close();
 			conn.close();
