@@ -72,9 +72,6 @@ public class DragAndDropPanel extends JPanel {
 		dragAndDrop.add(text);
 		dragAndDrop.add(dropArea);
 		dragAndDrop.setLayout(new GridLayout(1, 2));
-		//result = new JLabel("Result will show here");
-		//result.setFont(new Font("Tahoma", Font.PLAIN, 28));
-		//resultPanel.add(result);
 		
 		//Trying JTextArea instead of Jlabel to display result
 		result = new JTextArea();
@@ -91,8 +88,15 @@ public class DragAndDropPanel extends JPanel {
 		operation = new JPanel();
 		btn1 = new JButton("CLEAR");
 		btn1.setFont(new Font("Tahoma", Font.PLAIN, 26));
+		btn1.setBackground(Color.cyan);
+		btn1.setOpaque(true);
+		btn1.setBorderPainted(false);
+		
 		btn2 = new JButton("btn2");
 		btn2.setFont(new Font("Tahoma", Font.PLAIN, 26));
+		btn2.setBackground(Color.cyan);
+		btn2.setOpaque(true);
+		btn2.setBorderPainted(false);
 		
 		operation.add(btn1);
 		operation.add(btn2);
@@ -106,6 +110,9 @@ public class DragAndDropPanel extends JPanel {
 		this.add(operation);
 		
 		btnReturn = new JButton("RETURN");
+		btnReturn.setBackground(Color.cyan);
+		btnReturn.setOpaque(true);
+		btnReturn.setBorderPainted(false);
 		btnReturn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				mainPage main = new mainPage();

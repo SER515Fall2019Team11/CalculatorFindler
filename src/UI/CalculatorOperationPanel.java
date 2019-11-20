@@ -109,46 +109,34 @@ public class CalculatorOperationPanel extends JPanel {
 		}
 		btnPlus = new JButton("+");
 		btnPlus.setFont(new Font("Rockwell", Font.PLAIN, 36));
-		
+		btnPlus.setBackground(Color.cyan);
+		btnPlus.setOpaque(true);
+		btnPlus.setBorderPainted(false);
 		btnPlus.setTransferHandler(new ValueExportTransferHandler("+", dragPanel));
 		btnPlus.addMouseMotionListener(listener);
 		
-		/*
-		dragPanel.setLayout(new GridLayout(1,4));
-		JLabel b1 = new JLabel("Enter");
-		JLabel b2 = new JLabel("Enter");
-		JLabel b3 = new JLabel("Enter");
-		JLabel b4 = new JLabel("Enter");
-		JLabel b5 = new JLabel("Enter");
-		JLabel b6 = new JLabel("Enter");
-		
-		b1.setTransferHandler(new ValueImportTransferHandler());
-		b2.setTransferHandler(new ValueImportTransferHandler());
-		b3.setTransferHandler(new ValueImportTransferHandler());
-		b4.setTransferHandler(new ValueImportTransferHandler());
-		b5.setTransferHandler(new ValueImportTransferHandler());
-		b6.setTransferHandler(new ValueImportTransferHandler());
-		
-		dragPanel.add(b1);
-		dragPanel.add(b2);
-		dragPanel.add(b3);
-		dragPanel.add(b4);
-		dragPanel.add(b5);
-		dragPanel.add(b6);
-		*/
 		
 		btnMinus = new JButton("-");
 		btnMinus.setFont(new Font("Rockwell", Font.PLAIN, 36));
+		btnMinus.setBackground(Color.cyan);
+		btnMinus.setOpaque(true);
+		btnMinus.setBorderPainted(false);
 		btnMinus.setTransferHandler(new ValueExportTransferHandler("-", dragPanel));
 		btnMinus.addMouseMotionListener(listener);
 		
 		btnMulti = new JButton("*");
 		btnMulti.setFont(new Font("Rockwell", Font.PLAIN, 36));
+		btnMulti.setBackground(Color.cyan);
+		btnMulti.setOpaque(true);
+		btnMulti.setBorderPainted(false);
 		btnMulti.setTransferHandler(new ValueExportTransferHandler("*", dragPanel));
 		btnMulti.addMouseMotionListener(listener);
 		
 		btnDivision = new JButton("/");
 		btnDivision.setFont(new Font("Rockwell", Font.PLAIN, 36));
+		btnDivision.setBackground(Color.cyan);
+		btnDivision.setOpaque(true);
+		btnDivision.setBorderPainted(false);
 		btnDivision.setTransferHandler(new ValueExportTransferHandler("/", dragPanel));
 		btnDivision.addMouseMotionListener(listener);
 	
