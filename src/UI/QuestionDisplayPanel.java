@@ -28,7 +28,7 @@ public class QuestionDisplayPanel extends JPanel {
 	private JTable table;
 	private final String url = "jdbc:mysql://localhost:3306/mydb?useSSL=false";
 	private String user = "root";
-	private String password = "1234";
+	private String password = "Kuan890618";
 	/**
 	 * 
 	 */

@@ -6,8 +6,8 @@ create table student(
     password varchar(30) not null
 );
 
-insert into student values('0001','Jhon','Jhon001');
-insert into student values('0002','Smith','Smith001');
+insert into student values('1','Jhon','Jhon001');
+insert into student values('2','Smith','Smith001');
 
 create table teacher(
 	teacher_id varchar(10) not null primary key,

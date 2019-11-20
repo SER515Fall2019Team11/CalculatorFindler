@@ -37,7 +37,7 @@ public class teacherInput extends JFrame {
 	private JPanel contentPane;
 	private final String url = "jdbc:mysql://localhost:3306/mydb?useSSL=false";
 	private String user = "root";
-	private String password = "1234";
+	private String password = "Kuan890618";
 
 	/**
 	 * Launch the application.
@@ -90,7 +90,7 @@ public class teacherInput extends JFrame {
 		lblQuestion.setHorizontalAlignment(SwingConstants.CENTER);
 		lblQuestion.setFont(new Font("Rockwell", Font.PLAIN, 25));
 		
-		JButton btnBack = new JButton("Back");
+		JButton btnBack = new JButton("Return");
 		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

@@ -33,6 +33,7 @@ public class DragAndDropPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = -1888406948735963582L;
+	private JButton btnReturn;
 
 	/**
 	 * Create the panel.
@@ -103,6 +104,18 @@ public class DragAndDropPanel extends JPanel {
 		this.add(dragAndDrop);
 		this.add(resultPanel);
 		this.add(operation);
+		
+		btnReturn = new JButton("RETURN");
+		btnReturn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				mainPage main = new mainPage();
+				main.setVisible(true);
+				studentCalculate stu = new studentCalculate();
+				stu.dispose();
+			}
+		});
+		btnReturn.setFont(new Font("Tahoma", Font.PLAIN, 26));
+		operation.add(btnReturn);
 		this.setLayout(new GridLayout(3, 1));
 		
 		btn1.addActionListener(new ActionListener() {
