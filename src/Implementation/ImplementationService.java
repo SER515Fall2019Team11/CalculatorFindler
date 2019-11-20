@@ -24,28 +24,31 @@ public class ImplementationService {
 			int row = 0;
 			Statement stmt = null;
 			ResultSet rs = null;
-			String query = "select id, question, answer from question";
+			String query = "select id, question, answer, grades from question";
 
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(query);
 			String id = null;
 			String question = null;
-			//String answer = null;
+			String answer = null;
+			String grades = null;
 			if(rs.last()) {
 				row = rs.getRow();
 			}
 			rs.beforeFirst();
-			data = new Object[row][2];
+			data = new Object[row][4];
 
 			while (rs.next()){
 				int index = rs.getRow() -1;
 				id = rs.getString(1);
 				question = rs.getString(2);
-				//answer = rs.getString(3);
+				answer = rs.getString(3);
+				grades = rs.getString(4);
 				data[index][0] = id;
 				data[index][1] = question;
-				//data[index][2] = answer;
-				//System.out.println(id + " " + question + " " + answer);
+				data[index][2] = answer;
+				data[index][3] = grades;
+				System.out.println(id + " " + question + " " + answer + " " + grades);
 			}
 			stmt.close();
 			conn.close();

@@ -80,8 +80,19 @@ public class QuestionDisplayPanel extends JPanel {
 		ImplementationService imp = new ImplementationService(conn);
 		Object [][]data = imp.getAllQuestion();
 		//System.out.println(data.length);
-		String []colName = {"No.", "Question"};
-		table = new JTable(data, colName);
+		Object [][]dataShow = new Object[data.length][2];
+		for (int i = 0; i < data.length; i++) {
+			if (data[i][3].equals("0")) {
+				dataShow[i][0] = data[i][0];
+				dataShow[i][1] = data[i][1];
+				
+			} /*else if (data[i][3].equals("1")) {
+				dataShow[i][0] = data[i][0];
+				dataShow[i][1] = data[i][1];
+			}*/ 
+		}
+		String []colName = {"id", "Question"};
+		table = new JTable(dataShow, colName);
 		//table.setFont(new Font("Rockwell", Font.PLAIN, 21));
 		table.setFillsViewportHeight(true);
 		//table.getTableHeader().setBackground(new Color(255,255,204));
