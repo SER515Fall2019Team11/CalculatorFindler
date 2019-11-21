@@ -10,6 +10,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
 
 import Implementation.ImplementationService;
@@ -29,6 +31,8 @@ public class QuestionDisplayPanel extends JPanel {
 	private final String url = "jdbc:mysql://localhost:3306/mydb?useSSL=false";
 	private String user = "root";
 	private String password = "Kuan890618";
+	public DragAndDropPanel dPanel;
+	public String quesId;
 	/**
 	 * 
 	 */
@@ -37,8 +41,9 @@ public class QuestionDisplayPanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public QuestionDisplayPanel(JFrame frame) {
+	public QuestionDisplayPanel(JFrame frame, DragAndDropPanel dragPanel) {
 		this.frame = frame;
+		dPanel = dragPanel;
 		init();
 
 		addComponentListener(new ComponentAdapter() {
@@ -90,6 +95,15 @@ public class QuestionDisplayPanel extends JPanel {
 		TableAutoResize();
 		this.add(scroll, BorderLayout.CENTER);
 
+		table.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+	        public void valueChanged(ListSelectionEvent event) {
+	            // do some actions here, for example
+	            // print first column value from selected row
+	            quesId = table.getValueAt(table.getSelectedRow(), 0).toString();
+	            dPanel.result.setText("Solving Question:"+ quesId);
+	            dPanel.Id = quesId;
+	        }
+	    });
 	}
 
 }

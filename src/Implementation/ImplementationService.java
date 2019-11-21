@@ -131,4 +131,25 @@ public class ImplementationService {
 		}
 		return null;
 	}
+
+	public boolean checkAnswer(String id, String result) {
+		ResultSet rs = null;
+		Statement stmt = null;
+		String query = "select answer from question where id = '"+ id + "'";
+
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(query);
+			rs.next();
+			System.out.println(rs.getString(1));
+			if(Integer.parseInt(rs.getString(1).trim()) == Integer.parseInt(result.trim()))
+				return true;
+			else
+				return false;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
 }
