@@ -105,7 +105,7 @@ public class DragAndDropPanel extends JPanel {
 		btn1.setOpaque(true);
 		btn1.setBorderPainted(false);
 		
-		btn2 = new JButton("Submit");
+		btn2 = new JButton("SUBMIT");
 		btn2.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		btn2.setBackground(Color.cyan);
 		btn2.setOpaque(true);
