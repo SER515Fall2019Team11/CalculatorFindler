@@ -5,6 +5,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.swing.JOptionPane;
+
+import UI.DragAndDropPanel;
+
 /***
  * 
  * @author hzhan193
@@ -133,5 +137,35 @@ public class ImplementationService {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public boolean checkAnswer(String id, String result, DragAndDropPanel dPanel) {
+		ResultSet rs = null;
+		Statement stmt = null;
+		String query = "select answer from question where id = '"+ id + "'";
+
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(query);
+			rs.next();
+			System.out.println(rs.getString(1));
+			if(Integer.parseInt(rs.getString(1).trim()) == Integer.parseInt(result.trim())) {
+				stmt.close();
+				conn.close();
+				return true;
+				}
+			else {
+				stmt.close();
+				conn.close();
+				return false;
+				}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			//dPanel.result.setText("Press 'CLEAR' and start again !");
+		} catch(NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "Press 'CLEAR' and solve the equation!");
+		}
+		return false;
 	}
 }

@@ -23,7 +23,7 @@ public class studentCalculate extends JFrame {
 		setBounds(100, 100, 1400, 500);
 		DragAndDropPanel dPanel = new DragAndDropPanel(level);
 		CalculatorOperationPanel operationPanel = new CalculatorOperationPanel(dPanel, level);
-		QuestionDisplayPanel qPanel = new QuestionDisplayPanel(this);
+		QuestionDisplayPanel qPanel = new QuestionDisplayPanel(this, dPanel);
 		
 		add(operationPanel);
 		add(dPanel);

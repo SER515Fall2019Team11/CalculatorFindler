@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
 import java.util.Stack;
 
 import javax.script.ScriptEngine;
@@ -11,8 +12,12 @@ import javax.script.ScriptException;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+
+import Implementation.ImplementationService;
+
 import java.awt.Font;
 
 public class DragAndDropPanel extends JPanel {
@@ -24,7 +29,12 @@ public class DragAndDropPanel extends JPanel {
 	private JButton btn1;
 	private JButton btn2;
 	private JButton dropArea;
-	private int level;
+	public int level;
+	private final String url = "jdbc:mysql://localhost:3306/mydb?useSSL=false";
+	private String user = "root";
+	private String password = "Kuan890618";
+	public String Id;
+	public DragAndDropPanel obj_of_drag_drop;
 	//private static int res = 0;
 	//private int eqn_counter_start;
 	//private char operator = '`';
@@ -41,6 +51,7 @@ public class DragAndDropPanel extends JPanel {
 	 */
 	public DragAndDropPanel(int level) {
 		this.level = level;
+		obj_of_drag_drop = this;
 		init();
 	}
 	public void init() {
@@ -94,7 +105,7 @@ public class DragAndDropPanel extends JPanel {
 		btn1.setOpaque(true);
 		btn1.setBorderPainted(false);
 		
-		btn2 = new JButton("btn2");
+		btn2 = new JButton("Submit");
 		btn2.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		btn2.setBackground(Color.cyan);
 		btn2.setOpaque(true);
@@ -132,8 +143,30 @@ public class DragAndDropPanel extends JPanel {
 				//res = 0;
 				//operator = '`';
 				text.setText(null);
-				result.setText("Result will show here");
+				result.setText(null);
 			}
+		});
+	
+		btn2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(Id == null)
+					JOptionPane.showMessageDialog(null, "Select a question from list for which you want to check your answer!");
+				else {
+					DatabaseConn db = new DatabaseConn(url, user, password);
+				Connection conn = db.getMySqlConnection();		
+				if(conn == null) {
+					JOptionPane.showMessageDialog(null, "database connection failed");
+					return;
+				}
+				ImplementationService imp = new ImplementationService(conn);
+				if(imp.checkAnswer(Id, result.getText(), obj_of_drag_drop)) {
+					result.setText("You answer is correct!");
+				}
+				else {
+					result.setText("Your answer is wrong! Try again!");
+				}
+			}
+		}
 		});
 	}
 	

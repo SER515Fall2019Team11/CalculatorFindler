@@ -10,6 +10,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
 
 import Implementation.ImplementationService;
@@ -29,6 +31,8 @@ public class QuestionDisplayPanel extends JPanel {
 	private final String url = "jdbc:mysql://localhost:3306/mydb?useSSL=false";
 	private String user = "root";
 	private String password = "Kuan890618";
+	public DragAndDropPanel dPanel;
+	public String quesId;
 	/**
 	 * 
 	 */
@@ -37,8 +41,9 @@ public class QuestionDisplayPanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public QuestionDisplayPanel(JFrame frame) {
+	public QuestionDisplayPanel(JFrame frame, DragAndDropPanel dragPanel) {
 		this.frame = frame;
+		dPanel = dragPanel;
 		init();
 
 		addComponentListener(new ComponentAdapter() {
@@ -82,7 +87,7 @@ public class QuestionDisplayPanel extends JPanel {
 		//System.out.println(data.length);
 		Object [][]dataShow = new Object[data.length][2];
 		for (int i = 0; i < data.length; i++) {
-			if (data[i][3].equals("0")) {
+			if (data[i][3].equals(Integer.toString(dPanel.level))) {
 				dataShow[i][0] = data[i][0];
 				dataShow[i][1] = data[i][1];
 				
@@ -101,6 +106,13 @@ public class QuestionDisplayPanel extends JPanel {
 		TableAutoResize();
 		this.add(scroll, BorderLayout.CENTER);
 
+		table.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+	        public void valueChanged(ListSelectionEvent event) {
+	            quesId = table.getValueAt(table.getSelectedRow(), 0).toString();
+	            dPanel.result.setText("Selected Question:"+ quesId + "\n" + "Start solving the question!");
+	            dPanel.Id = quesId;
+	        }
+	    });
 	}
 
 }
