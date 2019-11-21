@@ -124,7 +124,7 @@ public class teacherInput extends JFrame {
 					int index = getTotalQA();
 					String id = Integer.toString(index + 1);
 					//System.out.println(id);
-					String query = "insert into question values('" + id + "', '" + questionText.getText() + "', '" + answerText.getText() + "')";
+					String query = "insert into question values('" + id + "', '" + questionText.getText() + "', '" + answerText.getText() + "','" + "0" + "')";
 					Statement statement = conn.createStatement();
 					statement.executeUpdate(query);
 					
