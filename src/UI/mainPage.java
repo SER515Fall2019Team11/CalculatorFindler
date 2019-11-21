@@ -33,7 +33,7 @@ public class mainPage extends JFrame {
 	private final String url = "jdbc:mysql://localhost:3306/mydb?useSSL=false";
 	private String user = "root";
 	private String password = "Kuan890618";
-
+	private int level;
 	/**
 	 * Launch the application.
 	 */
@@ -180,12 +180,12 @@ public class mainPage extends JFrame {
 					if (rdbtnStudent.isSelected()) {
 						
 						if (rdbtnLow.isSelected()) {
-							
+							level = 0;
 						} else if (rdbtnHigh.isSelected()) {
-							
+							level = 1;
 						}
 						if (stuCheck == true) {
-							studentCalculate student = new studentCalculate();
+							studentCalculate student = new studentCalculate(level);
 							student.setVisible(true);
 						} else {
 							JOptionPane.showMessageDialog(null, "Fail to Login");

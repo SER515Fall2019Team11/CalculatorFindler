@@ -7,26 +7,12 @@ import javax.swing.JFrame;
 @SuppressWarnings("serial")
 public class studentCalculate extends JFrame {
 
-	/**
-	 * Launch the application.
-	 */
-	/*public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					studentCalculate frame = new studentCalculate();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
-
+	private int level;
 	/**
 	 * Create the application.
 	 */
-	public studentCalculate() {
+	public studentCalculate(int level) {
+		this.level = level;
 		initialize();
 	}
 
@@ -35,8 +21,8 @@ public class studentCalculate extends JFrame {
 	 */
 	private void initialize() {		
 		setBounds(100, 100, 1400, 500);
-		DragAndDropPanel dPanel = new DragAndDropPanel();
-		CalculatorOperationPanel operationPanel = new CalculatorOperationPanel(dPanel);
+		DragAndDropPanel dPanel = new DragAndDropPanel(level);
+		CalculatorOperationPanel operationPanel = new CalculatorOperationPanel(dPanel, level);
 		QuestionDisplayPanel qPanel = new QuestionDisplayPanel(this);
 		
 		add(operationPanel);

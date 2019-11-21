@@ -24,6 +24,7 @@ public class DragAndDropPanel extends JPanel {
 	private JButton btn1;
 	private JButton btn2;
 	private JButton dropArea;
+	private int level;
 	//private static int res = 0;
 	//private int eqn_counter_start;
 	//private char operator = '`';
@@ -38,7 +39,8 @@ public class DragAndDropPanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public DragAndDropPanel() {
+	public DragAndDropPanel(int level) {
+		this.level = level;
 		init();
 	}
 	public void init() {
@@ -117,7 +119,7 @@ public class DragAndDropPanel extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				mainPage main = new mainPage();
 				main.setVisible(true);
-				studentCalculate stu = new studentCalculate();
+				studentCalculate stu = new studentCalculate(level);
 				stu.dispose();
 			}
 		});

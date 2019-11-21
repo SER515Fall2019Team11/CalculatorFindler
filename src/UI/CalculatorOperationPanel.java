@@ -43,6 +43,7 @@ public class CalculatorOperationPanel extends JPanel {
 	private JButton btnMinus;
 	private JButton btnMulti;
 	private JButton btnDivision;
+	private int level;
 	private DragAndDropPanel dragPanel;
 	
 	//private JFrame dragPanelTest;
@@ -54,12 +55,18 @@ public class CalculatorOperationPanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public CalculatorOperationPanel(DragAndDropPanel dPanel) {
+	public CalculatorOperationPanel(DragAndDropPanel dPanel, int level) {
 		dragPanel = dPanel;
+		this.level = level;
 		init();
 	}
 	
-	
+	public void disabledButton(int level) {
+		if(level == 0) {
+			this.btnMulti.setVisible(false);
+			this.btnDivision.setVisible(false);
+		}
+	}
 	public void init() {
 		panelInit();
 		btnInit();
@@ -139,6 +146,7 @@ public class CalculatorOperationPanel extends JPanel {
 		btnDivision.setBorderPainted(false);
 		btnDivision.setTransferHandler(new ValueExportTransferHandler("/", dragPanel));
 		btnDivision.addMouseMotionListener(listener);
+		disabledButton(this.level);
 	
 	}
 
