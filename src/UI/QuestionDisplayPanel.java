@@ -83,21 +83,19 @@ public class QuestionDisplayPanel extends JPanel {
 			return;
 		}
 		ImplementationService imp = new ImplementationService(conn);
-		Object [][]data = imp.getAllQuestion();
+		Object [][]data = imp.getAllQuestion(dPanel.level);
 		//System.out.println(data.length);
+		/*
 		Object [][]dataShow = new Object[data.length][2];
 		for (int i = 0; i < data.length; i++) {
 			if (data[i][3].equals(Integer.toString(dPanel.level))) {
 				dataShow[i][0] = data[i][0];
 				dataShow[i][1] = data[i][1];
 				
-			} /*else if (data[i][3].equals("1")) {
-				dataShow[i][0] = data[i][0];
-				dataShow[i][1] = data[i][1];
-			}*/ 
-		}
+			}
+		}*/
 		String []colName = {"id", "Question"};
-		table = new JTable(dataShow, colName);
+		table = new JTable(data, colName);
 		//table.setFont(new Font("Rockwell", Font.PLAIN, 21));
 		table.setFillsViewportHeight(true);
 		//table.getTableHeader().setBackground(new Color(255,255,204));

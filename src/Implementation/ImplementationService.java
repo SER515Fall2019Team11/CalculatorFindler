@@ -21,14 +21,31 @@ public class ImplementationService {
 	public ImplementationService(Connection conn) {
 		this.conn  = conn;
 	}
-
-	public Object[][] getAllQuestion(){
+	public int getTotalNum() {
+		try {
+			int row = 0;
+			Statement stmt = null;
+			ResultSet rs = null;
+			String query = "select count(*) from question";
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(query);
+			while(rs.next()) {
+				row = Integer.parseInt(rs.getString(1));
+			}
+			System.out.println("row is " + row);
+			return row;
+		}catch(SQLException ex) {
+			ex.printStackTrace();
+			return 0;
+		}
+	}
+	public Object[][] getAllQuestion(int level){
 		try {
 			Object [][]data;
 			int row = 0;
 			Statement stmt = null;
 			ResultSet rs = null;
-			String query = "select id, question, answer, grades from question";
+			String query = "select id, question, answer, grades from question where grades = '" + level + "'";
 
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(query);

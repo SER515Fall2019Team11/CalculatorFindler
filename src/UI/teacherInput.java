@@ -59,8 +59,9 @@ public class teacherInput extends JFrame {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn = DriverManager.getConnection(url, user, password);
 			ImplementationService imp = new ImplementationService(conn);
-			Object [][]data = imp.getAllQuestion();
-			return data.length;
+			//Object [][]data = imp.getAllQuestion();
+			//return data.length;
+			return imp.getTotalNum();
 		} catch (Exception ex) {
 			System.out.println(ex);
 			return 0;
