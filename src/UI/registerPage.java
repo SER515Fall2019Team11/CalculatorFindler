@@ -132,6 +132,26 @@ public class registerPage extends JFrame {
 		JRadioButton rdbtnTeacher = new JRadioButton("Teacher");
 		rdbtnTeacher.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		
+		rdbtnStudent.addActionListener(new ActionListener() {
+			@Override
+		    public void actionPerformed(ActionEvent e)
+		    {
+				if (rdbtnStudent.isSelected()) {
+					rdbtnTeacher.setSelected(false);
+				} 
+		    }
+		});
+		
+		rdbtnTeacher.addActionListener(new ActionListener() {
+			@Override
+		    public void actionPerformed(ActionEvent e)
+		    {
+				if (rdbtnTeacher.isSelected()) {
+					rdbtnStudent.setSelected(false);
+				}
+		    }
+		});
+		
 		JButton btnRegister = new JButton("Register");
 		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

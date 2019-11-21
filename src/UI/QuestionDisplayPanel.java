@@ -21,6 +21,8 @@ import java.awt.event.ComponentEvent;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.awt.Font;
 
 @SuppressWarnings("unused")
@@ -63,6 +65,26 @@ public class QuestionDisplayPanel extends JPanel {
 		//this.setBackground(new Color(255,255,204));
 		this.setBackground(Color.cyan);
 	}
+	
+	public static void sortbyColumn(Object arr[][], int col) {
+		Arrays.sort(arr, new Comparator<Object[]>() {
+
+			@Override
+			public int compare(final Object[] o1, final Object[] o2) {
+				// TODO Auto-generated method stub
+				int entry1 = Integer.parseInt(o1[0].toString());
+				int entry2 = Integer.parseInt(o2[0].toString());
+
+				if (entry1 > entry2) {
+					return 1;
+				} else {
+					return -1;
+				}
+			}
+			
+		});
+	}
+	
 	private void TableAutoResize() {
 		table.setPreferredScrollableViewportSize(new Dimension(this.frame.getWidth() / 3 - 10, this.frame.getHeight()));
 		//table.setBackground(new Color(255,255,204));
@@ -73,6 +95,7 @@ public class QuestionDisplayPanel extends JPanel {
 		scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 	}
+	@SuppressWarnings("unchecked")
 	private void addTable() {
 		//Object [][]data;
 
@@ -84,6 +107,7 @@ public class QuestionDisplayPanel extends JPanel {
 		}
 		ImplementationService imp = new ImplementationService(conn);
 		Object [][]data = imp.getAllQuestion(dPanel.level);
+		sortbyColumn(data, 0);
 		//System.out.println(data.length);
 		/*
 		Object [][]dataShow = new Object[data.length][2];

@@ -150,6 +150,10 @@ public class mainPage extends JFrame {
 		
 		JRadioButton rdbtnStudent = new JRadioButton("Student");
 		rdbtnStudent.setFont(new Font("Tahoma", Font.PLAIN, 26));
+		
+		JRadioButton rdbtnTeacher = new JRadioButton("Teacher");
+		rdbtnTeacher.setFont(new Font("Tahoma", Font.PLAIN, 26));
+		
 		rdbtnStudent.addActionListener(new ActionListener() {
 			@Override
 		    public void actionPerformed(ActionEvent e)
@@ -158,16 +162,43 @@ public class mainPage extends JFrame {
 					lblSelectLevel.setEnabled(true);
 					rdbtnLow.setEnabled(true);
 					rdbtnHigh.setEnabled(true);
-				} else {
+					rdbtnTeacher.setSelected(false);
+				} 
+		    }
+		});
+		
+		rdbtnTeacher.addActionListener(new ActionListener() {
+			@Override
+		    public void actionPerformed(ActionEvent e)
+		    {
+				if (rdbtnTeacher.isSelected()) {
 					lblSelectLevel.setEnabled(false);
 					rdbtnLow.setEnabled(false);
 					rdbtnHigh.setEnabled(false);
+					rdbtnStudent.setSelected(false);
 				}
 		    }
 		});
 		
-		JRadioButton rdbtnTeacher = new JRadioButton("Teacher");
-		rdbtnTeacher.setFont(new Font("Tahoma", Font.PLAIN, 26));
+		rdbtnLow.addActionListener(new ActionListener() {
+			@Override
+		    public void actionPerformed(ActionEvent e)
+		    {
+				if (rdbtnLow.isSelected()) {
+					rdbtnHigh.setSelected(false);
+				}
+		    }
+		});
+		
+		rdbtnHigh.addActionListener(new ActionListener() {
+			@Override
+		    public void actionPerformed(ActionEvent e)
+		    {
+				if (rdbtnHigh.isSelected()) {
+					rdbtnLow.setSelected(false);
+				}
+		    }
+		});
 		
 		JButton loginBtn = new JButton("Log in");
 		loginBtn.addActionListener(new ActionListener() {
