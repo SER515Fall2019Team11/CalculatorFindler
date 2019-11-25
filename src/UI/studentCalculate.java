@@ -8,11 +8,13 @@ import javax.swing.JFrame;
 public class studentCalculate extends JFrame {
 
 	private int level;
+	private studentCalculate stu;
 	/**
 	 * Create the application.
 	 */
 	public studentCalculate(int level) {
 		this.level = level;
+		stu = this;
 		initialize();
 	}
 
@@ -21,7 +23,7 @@ public class studentCalculate extends JFrame {
 	 */
 	private void initialize() {		
 		setBounds(100, 100, 1400, 500);
-		DragAndDropPanel dPanel = new DragAndDropPanel(level);
+		DragAndDropPanel dPanel = new DragAndDropPanel(level, stu);
 		CalculatorOperationPanel operationPanel = new CalculatorOperationPanel(dPanel, level);
 		QuestionDisplayPanel qPanel = new QuestionDisplayPanel(this, dPanel);
 		

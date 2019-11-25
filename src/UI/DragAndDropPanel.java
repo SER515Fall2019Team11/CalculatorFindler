@@ -33,6 +33,7 @@ public class DragAndDropPanel extends JPanel {
 	private final String url = "jdbc:mysql://localhost:3306/mydb?useSSL=false";
 	private String user = "root";
 	private String password = "Kuan890618";
+	private studentCalculate stu;
 	public String Id;
 	public DragAndDropPanel obj_of_drag_drop;
 	//private static int res = 0;
@@ -49,8 +50,9 @@ public class DragAndDropPanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public DragAndDropPanel(int level) {
+	public DragAndDropPanel(int level, studentCalculate student) {
 		this.level = level;
+		stu = student;
 		obj_of_drag_drop = this;
 		init();
 	}
@@ -130,7 +132,7 @@ public class DragAndDropPanel extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				mainPage main = new mainPage();
 				main.setVisible(true);
-				studentCalculate stu = new studentCalculate(level);
+				//studentCalculate stu = new studentCalculate(level);
 				stu.dispose();
 			}
 		});

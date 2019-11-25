@@ -18,6 +18,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JPasswordField;
@@ -37,14 +38,21 @@ public class mainPage extends JFrame {
 	private String user = "root";
 	private String password = "Kuan890618";
 	private int level;
+	private static mainPage frame;
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		try { 
+			UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+		    }
+		catch (Exception e) {
+		    e.printStackTrace();
+		}
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					mainPage frame = new mainPage();
+					frame = new mainPage();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -95,6 +103,7 @@ public class mainPage extends JFrame {
 	 * Create the frame.
 	 */
 	public mainPage() {
+		frame = this;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1400, 500);
 		contentPane = new JPanel();
@@ -255,6 +264,7 @@ public class mainPage extends JFrame {
 						}
 						if (stuCheck == true) {
 							studentCalculate student = new studentCalculate(level);
+							frame.dispose();
 							student.setVisible(true);
 						} else {
 							JOptionPane.showMessageDialog(null, "Fail to Login");
@@ -262,6 +272,7 @@ public class mainPage extends JFrame {
 					} else if (rdbtnTeacher.isSelected()) {
 						if (teaCheck == true) {
 							teacherInput teacher = new teacherInput();
+							frame.dispose();
 							teacher.setVisible(true);
 						} else {
 							JOptionPane.showMessageDialog(null, "Fail to Login");

@@ -39,7 +39,7 @@ public class teacherInput extends JFrame {
 	private final String url = "jdbc:mysql://localhost:3306/mydb?useSSL=false";
 	private String user = "root";
 	private String password = "Kuan890618";
-
+	private teacherInput ti;
 	/**
 	 * Launch the application.
 	 */
@@ -73,6 +73,7 @@ public class teacherInput extends JFrame {
 	 * Create the frame.
 	 */
 	public teacherInput() {
+		ti = this;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1400, 500);
 		contentPane = new JPanel();
@@ -129,6 +130,7 @@ public class teacherInput extends JFrame {
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mainPage main = new mainPage();
+				ti.dispose();
 				main.setVisible(true);
 				setVisible(false);
 			}
