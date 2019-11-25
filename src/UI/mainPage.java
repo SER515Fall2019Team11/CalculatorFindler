@@ -22,6 +22,9 @@ import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
+import java.awt.Color;
+import javax.swing.JSeparator;
+import java.awt.SystemColor;
 
 @SuppressWarnings("serial")
 public class mainPage extends JFrame {
@@ -95,6 +98,7 @@ public class mainPage extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1400, 500);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.DARK_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
@@ -117,41 +121,73 @@ public class mainPage extends JFrame {
 		btnTeacher.setFont(new Font("Stencil", Font.PLAIN, 17));*/
 		
 		JLabel lblWelcomePleaseSelect = new JLabel("Welcome! Please Log in / Register");
+		lblWelcomePleaseSelect.setBounds(145, 18, 1149, 58);
+		lblWelcomePleaseSelect.setForeground(SystemColor.activeCaption);
 		lblWelcomePleaseSelect.setHorizontalAlignment(SwingConstants.CENTER);
 		lblWelcomePleaseSelect.setFont(new Font("Palatino Linotype", Font.PLAIN, 30));
 		
 		JLabel lblUsername = new JLabel("Username");
+		lblUsername.setBounds(145, 125, 126, 40);
+		lblUsername.setForeground(SystemColor.activeCaption);
 		lblUsername.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		
 		JLabel lblPassword = new JLabel("Password");
+		lblPassword.setBounds(145, 214, 126, 40);
+		lblPassword.setForeground(SystemColor.activeCaption);
 		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		
 		usernameTF = new JTextField();
+		usernameTF.setBounds(276, 122, 427, 46);
+		usernameTF.setForeground(Color.WHITE);
+		usernameTF.setBackground(Color.DARK_GRAY);
 		usernameTF.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		usernameTF.setColumns(10);
+		usernameTF.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+		
 		
 		passwordField = new JPasswordField();
+		passwordField.setBounds(276, 214, 427, 48);
+		passwordField.setBackground(Color.DARK_GRAY);
 		passwordField.setFont(new Font("Tahoma", Font.PLAIN, 26));
+		passwordField.setForeground(Color.WHITE);
+		passwordField.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		
 		JLabel lblSelectRole = new JLabel("Select Role:");
+		lblSelectRole.setBounds(856, 83, 220, 67);
+		lblSelectRole.setForeground(SystemColor.activeCaption);
 		lblSelectRole.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		
 		JLabel lblSelectLevel = new JLabel("Select Level:");
+		lblSelectLevel.setBounds(856, 245, 220, 67);
 		lblSelectLevel.setEnabled(false);
+		lblSelectLevel.setForeground(SystemColor.activeCaption);
+		lblSelectLevel.setBackground(Color.DARK_GRAY);
 		lblSelectLevel.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		
 		JRadioButton rdbtnLow = new JRadioButton("Low");
+		rdbtnLow.setBounds(917, 330, 147, 41);
 		rdbtnLow.setEnabled(false);
+		rdbtnLow.setForeground(SystemColor.activeCaption);
+		rdbtnLow.setBackground(Color.DARK_GRAY);
 		rdbtnLow.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		
 		JRadioButton rdbtnHigh = new JRadioButton("High");
+		rdbtnHigh.setBounds(1210, 330, 106, 41);
+		rdbtnHigh.setForeground(SystemColor.activeCaption);
+		rdbtnHigh.setBackground(Color.DARK_GRAY);
 		rdbtnHigh.setEnabled(false);
 		rdbtnHigh.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		
 		JRadioButton rdbtnStudent = new JRadioButton("Student");
+		rdbtnStudent.setBounds(917, 169, 119, 44);
+		rdbtnStudent.setForeground(SystemColor.activeCaption);
+		rdbtnStudent.setBackground(Color.DARK_GRAY);
 		rdbtnStudent.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		
 		JRadioButton rdbtnTeacher = new JRadioButton("Teacher");
+		rdbtnTeacher.setBounds(1210, 169, 121, 44);
+		rdbtnTeacher.setForeground(SystemColor.activeCaption);
+		rdbtnTeacher.setBackground(Color.DARK_GRAY);
 		rdbtnTeacher.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		
 		rdbtnStudent.addActionListener(new ActionListener() {
@@ -200,7 +236,9 @@ public class mainPage extends JFrame {
 		    }
 		});
 		
-		JButton loginBtn = new JButton("Log in");
+		JButton loginBtn = new JButton("LOG IN");
+		loginBtn.setBounds(206, 318, 174, 50);
+		loginBtn.setForeground(SystemColor.activeCaption);
 		loginBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String password1 = new String(passwordField.getPassword());
@@ -237,102 +275,46 @@ public class mainPage extends JFrame {
 				}
 			}
 		});
-		loginBtn.setFont(new Font("Tahoma", Font.PLAIN, 26));
+		loginBtn.setFont(new Font("Calibri", Font.BOLD, 26));
+		loginBtn.setBackground(Color.DARK_GRAY);
+		loginBtn.setForeground(SystemColor.activeCaption);
+		loginBtn.setOpaque(true);
+		loginBtn.setBorderPainted(false);
 		
-		JButton registerBtn = new JButton("Register");
+		JButton registerBtn = new JButton("REGISTER");
+		registerBtn.setBounds(539, 318, 174, 50);
 		registerBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				registerPage register = new registerPage();
 				register.setVisible(true);
 			}
 		});
-		registerBtn.setFont(new Font("Tahoma", Font.PLAIN, 26));
+		registerBtn.setFont(new Font("Calibri", Font.BOLD, 26));
+		registerBtn.setBackground(Color.DARK_GRAY);
+		registerBtn.setForeground(SystemColor.activeCaption);
+		registerBtn.setOpaque(true);
+		registerBtn.setBorderPainted(false);
 		
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(140)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(lblWelcomePleaseSelect, GroupLayout.DEFAULT_SIZE, 1092, Short.MAX_VALUE)
-							.addGap(140))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addComponent(lblPassword, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(passwordField, 427, 427, 427))
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addComponent(lblUsername, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(usernameTF, GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE)))
-							.addGap(125)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblSelectRole, GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
-								.addComponent(lblSelectLevel, GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE))
-							.addGap(358)))
-					.addContainerGap())
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(859)
-							.addComponent(rdbtnStudent, GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
-							.addGap(122))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(201)
-							.addComponent(loginBtn, GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
-							.addGap(159)
-							.addComponent(registerBtn, GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
-							.addGap(204)
-							.addComponent(rdbtnLow, GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
-							.addGap(146)))
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(rdbtnTeacher, GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(rdbtnHigh, GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-							.addGap(15)))
-					.addGap(103))
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblWelcomePleaseSelect, GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(46)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblUsername, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-								.addComponent(usernameTF, GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(lblSelectRole, GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
-							.addGap(18)))
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(46)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblPassword, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-								.addComponent(passwordField, GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE))
-							.addGap(51)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-								.addComponent(loginBtn, GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-								.addComponent(registerBtn, GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE))
-							.addGap(7))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(rdbtnTeacher, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
-								.addComponent(rdbtnStudent, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE))
-							.addGap(30)
-							.addComponent(lblSelectLevel, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-								.addComponent(rdbtnHigh, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
-								.addComponent(rdbtnLow, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE))))
-					.addGap(73))
-		);
-		contentPane.setLayout(gl_contentPane);
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setBounds(276, 169, 427, 10);
+		
+		JSeparator separator_2 = new JSeparator();
+		separator_2.setBounds(276, 269, 427, 10);
+		contentPane.setLayout(null);
+		contentPane.add(lblWelcomePleaseSelect);
+		contentPane.add(lblUsername);
+		contentPane.add(separator_1);
+		contentPane.add(usernameTF);
+		contentPane.add(lblPassword);
+		contentPane.add(separator_2);
+		contentPane.add(passwordField);
+		contentPane.add(lblSelectRole);
+		contentPane.add(lblSelectLevel);
+		contentPane.add(rdbtnStudent);
+		contentPane.add(loginBtn);
+		contentPane.add(registerBtn);
+		contentPane.add(rdbtnLow);
+		contentPane.add(rdbtnTeacher);
+		contentPane.add(rdbtnHigh);
 	}
 }

@@ -22,6 +22,7 @@ import DragMouseAdapter.DragMouseAdapter;
 import DragMouseAdapter.ValueExportTransferHandler;
 import DragMouseAdapter.ValueImportTransferHandler;
 import java.awt.Font;
+import java.awt.SystemColor;
 
 @SuppressWarnings("unused")
 public class CalculatorOperationPanel extends JPanel {
@@ -82,7 +83,7 @@ public class CalculatorOperationPanel extends JPanel {
 		groupOperandBtn.add(btnNum9);*/
 		groupOperandBtn.setLayout(new GridLayout(4,3));
 		groupOperandBtn.setBorder(BorderFactory.createTitledBorder("Operand"));
-		groupOperandBtn.setBackground(Color.cyan);
+		groupOperandBtn.setBackground(SystemColor.inactiveCaption);
 		
 		groupOperationBtn.add(btnPlus);
 		groupOperationBtn.add(btnMinus);

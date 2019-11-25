@@ -27,6 +27,9 @@ import java.awt.event.ActionEvent;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JRadioButton;
+import java.awt.Color;
+import java.awt.SystemColor;
+import javax.swing.JSeparator;
 
 public class registerPage extends JFrame {
 
@@ -100,36 +103,63 @@ public class registerPage extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 676, 586);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.DARK_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
 		JLabel lblRegisterPage = new JLabel("Register Page");
+		lblRegisterPage.setBounds(17, 29, 628, 61);
+		lblRegisterPage.setForeground(SystemColor.activeCaption);
 		lblRegisterPage.setHorizontalAlignment(SwingConstants.CENTER);
 		lblRegisterPage.setFont(new Font("Palatino Linotype", Font.PLAIN, 30));
 		
 		JLabel label_1 = new JLabel("Username");
+		label_1.setForeground(SystemColor.activeCaption);
+		label_1.setBounds(17, 114, 126, 55);
 		label_1.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		
 		usernameTextField = new JTextField();
+		usernameTextField.setBorder(null);
+		usernameTextField.setForeground(Color.WHITE);
+		usernameTextField.setBackground(Color.DARK_GRAY);
+		usernameTextField.setBounds(271, 108, 364, 46);
 		usernameTextField.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		usernameTextField.setColumns(10);
 		
 		JLabel label_2 = new JLabel("Password");
+		label_2.setForeground(SystemColor.activeCaption);
+		label_2.setBounds(17, 219, 126, 40);
 		label_2.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		
 		passwordField = new JPasswordField();
+		passwordField.setBorder(null);
+		passwordField.setForeground(Color.WHITE);
+		passwordField.setBackground(Color.DARK_GRAY);
+		passwordField.setBounds(267, 201, 368, 49);
 		passwordField.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		
 		JLabel lblConfirmPassword = new JLabel("Confirm Password");
+		lblConfirmPassword.setForeground(SystemColor.activeCaption);
+		lblConfirmPassword.setBounds(17, 304, 219, 62);
 		lblConfirmPassword.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		
 		passwordField_1 = new JPasswordField();
+		passwordField_1.setBorder(null);
+		passwordField_1.setForeground(Color.WHITE);
+		passwordField_1.setBackground(Color.DARK_GRAY);
+		passwordField_1.setBounds(267, 293, 368, 49);
 		passwordField_1.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		
 		JRadioButton rdbtnStudent = new JRadioButton("Student");
+		rdbtnStudent.setForeground(SystemColor.activeCaption);
+		rdbtnStudent.setBackground(Color.DARK_GRAY);
+		rdbtnStudent.setBounds(173, 392, 109, 37);
 		rdbtnStudent.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		
 		JRadioButton rdbtnTeacher = new JRadioButton("Teacher");
+		rdbtnTeacher.setForeground(SystemColor.activeCaption);
+		rdbtnTeacher.setBackground(Color.DARK_GRAY);
+		rdbtnTeacher.setBounds(395, 392, 115, 37);
 		rdbtnTeacher.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		
 		rdbtnStudent.addActionListener(new ActionListener() {
@@ -152,7 +182,11 @@ public class registerPage extends JFrame {
 		    }
 		});
 		
-		JButton btnRegister = new JButton("Register");
+		JButton btnRegister = new JButton("REGISTER");
+		btnRegister.setForeground(SystemColor.activeCaption);
+		btnRegister.setBorder(null);
+		btnRegister.setBackground(Color.DARK_GRAY);
+		btnRegister.setBounds(253, 466, 145, 55);
 		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String password1 = new String(passwordField.getPassword());
@@ -201,74 +235,30 @@ public class registerPage extends JFrame {
 				
 			}
 		});
-		btnRegister.setFont(new Font("Tahoma", Font.PLAIN, 26));
+		btnRegister.setFont(new Font("Calibri", Font.BOLD, 26));
+		contentPane.setLayout(null);
+		contentPane.add(lblRegisterPage);
+		contentPane.add(label_1);
+		contentPane.add(usernameTextField);
+		contentPane.add(label_2);
+		contentPane.add(passwordField);
+		contentPane.add(lblConfirmPassword);
+		contentPane.add(passwordField_1);
+		contentPane.add(rdbtnStudent);
+		contentPane.add(rdbtnTeacher);
+		contentPane.add(btnRegister);
 		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(265, 159, 381, 10);
+		contentPane.add(separator);
 		
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(lblRegisterPage, GroupLayout.PREFERRED_SIZE, 628, GroupLayout.PREFERRED_SIZE)
-							.addContainerGap())
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addComponent(label_1, GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
-									.addGap(128)
-									.addComponent(usernameTextField, GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE))
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addComponent(label_2, GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
-									.addGap(124)
-									.addComponent(passwordField, GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE))
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addComponent(lblConfirmPassword, GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
-									.addGap(31)
-									.addComponent(passwordField_1, GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)))
-							.addGap(22))))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(168)
-					.addComponent(rdbtnStudent)
-					.addGap(113)
-					.addComponent(rdbtnTeacher)
-					.addContainerGap(223, Short.MAX_VALUE))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(248)
-					.addComponent(btnRegister, GroupLayout.PREFERRED_SIZE, 145, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(259, Short.MAX_VALUE))
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(24)
-					.addComponent(lblRegisterPage, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(6)
-							.addComponent(label_1, GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
-						.addComponent(usernameTextField, GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE))
-					.addGap(46)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(passwordField, GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
-						.addComponent(label_2, GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
-					.addGap(38)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(2)
-							.addComponent(lblConfirmPassword, GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE))
-						.addComponent(passwordField_1, GroupLayout.PREFERRED_SIZE, 49, GroupLayout.PREFERRED_SIZE))
-					.addGap(26)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(rdbtnStudent)
-						.addComponent(rdbtnTeacher))
-					.addGap(37)
-					.addComponent(btnRegister, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
-		);
-		contentPane.setLayout(gl_contentPane);
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setBounds(264, 252, 381, 10);
+		contentPane.add(separator_1);
+		
+		JSeparator separator_2 = new JSeparator();
+		separator_2.setBounds(264, 342, 381, 10);
+		contentPane.add(separator_2);
 	}
 
 }
