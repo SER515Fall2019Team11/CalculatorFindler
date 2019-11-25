@@ -52,6 +52,8 @@ public class CalculatorOperationPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private JButton btnLeftPts;
+	private JButton btnRightPts;
 
 	/**
 	 * Create the panel.
@@ -66,6 +68,8 @@ public class CalculatorOperationPanel extends JPanel {
 		if(level == 0) {
 			this.btnMulti.setVisible(false);
 			this.btnDivision.setVisible(false);
+			this.btnLeftPts.setVisible(false);
+			this.btnRightPts.setVisible(false);
 		}
 	}
 	public void init() {
@@ -83,18 +87,22 @@ public class CalculatorOperationPanel extends JPanel {
 		groupOperandBtn.add(btnNum9);*/
 		groupOperandBtn.setLayout(new GridLayout(4,3));
 		groupOperandBtn.setBorder(BorderFactory.createTitledBorder("Operand"));
-		groupOperandBtn.setBackground(SystemColor.inactiveCaption);
+		groupOperandBtn.setBackground(Color.CYAN);
 		
 		groupOperationBtn.add(btnPlus);
 		groupOperationBtn.add(btnMinus);
 		groupOperationBtn.add(btnMulti);
 		groupOperationBtn.add(btnDivision);
-		groupOperationBtn.setLayout(new GridLayout(2,2));
+		groupOperationBtn.add(btnLeftPts);
+		groupOperationBtn.add(btnRightPts);
+		
+		groupOperationBtn.setLayout(new GridLayout(3,2));
 		groupOperationBtn.setBorder(BorderFactory.createTitledBorder("Operator"));
 		groupOperationBtn.setBackground(Color.cyan);
 		
 		this.add(groupOperandBtn);
 		this.add(groupOperationBtn);
+		
 		this.setLayout(new GridLayout(2,1));
 	}
 	private void panelInit() {
@@ -116,7 +124,7 @@ public class CalculatorOperationPanel extends JPanel {
 			btnOperand.addMouseMotionListener(listener);
 		}
 		btnPlus = new JButton("+");
-		btnPlus.setFont(new Font("Rockwell", Font.PLAIN, 36));
+		btnPlus.setFont(new Font("Rockwell", Font.PLAIN, 32));
 		btnPlus.setBackground(Color.cyan);
 		btnPlus.setOpaque(true);
 		btnPlus.setBorderPainted(false);
@@ -125,7 +133,7 @@ public class CalculatorOperationPanel extends JPanel {
 		
 		
 		btnMinus = new JButton("-");
-		btnMinus.setFont(new Font("Rockwell", Font.PLAIN, 36));
+		btnMinus.setFont(new Font("Rockwell", Font.PLAIN, 32));
 		btnMinus.setBackground(Color.cyan);
 		btnMinus.setOpaque(true);
 		btnMinus.setBorderPainted(false);
@@ -133,7 +141,7 @@ public class CalculatorOperationPanel extends JPanel {
 		btnMinus.addMouseMotionListener(listener);
 		
 		btnMulti = new JButton("*");
-		btnMulti.setFont(new Font("Rockwell", Font.PLAIN, 36));
+		btnMulti.setFont(new Font("Rockwell", Font.PLAIN, 32));
 		btnMulti.setBackground(Color.cyan);
 		btnMulti.setOpaque(true);
 		btnMulti.setBorderPainted(false);
@@ -141,12 +149,29 @@ public class CalculatorOperationPanel extends JPanel {
 		btnMulti.addMouseMotionListener(listener);
 		
 		btnDivision = new JButton("/");
-		btnDivision.setFont(new Font("Rockwell", Font.PLAIN, 36));
+		btnDivision.setFont(new Font("Rockwell", Font.PLAIN, 32));
 		btnDivision.setBackground(Color.cyan);
 		btnDivision.setOpaque(true);
 		btnDivision.setBorderPainted(false);
 		btnDivision.setTransferHandler(new ValueExportTransferHandler("/", dragPanel));
 		btnDivision.addMouseMotionListener(listener);
+		
+		btnLeftPts = new JButton("(");
+		btnLeftPts.setFont(new Font("Rockwell", Font.PLAIN, 30));
+		btnLeftPts.setBackground(Color.cyan);
+		btnLeftPts.setOpaque(true);
+		btnLeftPts.setBorderPainted(false);
+		btnLeftPts.setTransferHandler(new ValueExportTransferHandler("(", dragPanel));
+		btnLeftPts.addMouseMotionListener(listener);
+		
+		btnRightPts = new JButton(")");
+		btnRightPts.setFont(new Font("Rockwell", Font.PLAIN, 30));
+		btnRightPts.setBackground(Color.cyan);
+		btnRightPts.setOpaque(true);
+		btnRightPts.setBorderPainted(false);
+		btnRightPts.setTransferHandler(new ValueExportTransferHandler(")", dragPanel));
+		btnRightPts.addMouseMotionListener(listener);
+		
 		disabledButton(this.level);
 	
 	}
