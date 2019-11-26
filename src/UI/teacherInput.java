@@ -157,25 +157,26 @@ public class teacherInput extends JFrame {
 					fw.close();  */
 					Class.forName("com.mysql.jdbc.Driver");
 					Connection conn = DriverManager.getConnection(url, user, password);
-					int index = getTotalQA();
-					String id = Integer.toString(index + 1);
+					//int index = getTotalQA();
+					//String id = Integer.toString(index + 1);
 					String level = "";
 					if (rdbtnLow.isSelected()) {
 						level = "0";
 					} else if (rdbtnHigh.isSelected()) {
 						level = "1";
 					} else {
-						JOptionPane.showMessageDialog(null, "Error! Please Select the level of Grades!");
+						//JOptionPane.showMessageDialog(null, "Error! Please Select the level of Grades!");
+						JOptionPane.showMessageDialog(null, "Error! Please Select the grade level!");
 					}
 					//System.out.println(id);
-					String query = "insert into question values('" + id + "', '" + questionText.getText() + "', '" + answerText.getText() + "','" + level + "')";
+					String query = "insert into question(question, answer, grades) values('" + questionText.getText() + "', '" + answerText.getText() + "','" + level + "')";
 					Statement statement = conn.createStatement();
 					statement.executeUpdate(query);
 					
 					JOptionPane.showMessageDialog(null, "Successfully added the question");
 				} catch(Exception ex) {
 					System.out.println(ex);
-					JOptionPane.showMessageDialog(null, "Fail added the question");
+					JOptionPane.showMessageDialog(null, "Failed to add the question");
 				}
 			}
 		});
