@@ -196,18 +196,19 @@ public class registerPage extends JFrame {
 					if (password1.equals(password_check)) {
 						boolean stuCheck = checkStuUsername(usernameTextField.getText());
 						boolean teaCheck = checkTeaUsername(usernameTextField.getText());
-						int index = 2;
-						String id = Integer.toString(index + 1);
+						//int index = 2;
+						//String id = Integer.toString(index + 1);
 						if (rdbtnStudent.isSelected()) {
 							if (stuCheck == true) {
 								JOptionPane.showMessageDialog(null, "Username Exists!");
 							} else {
 								Class.forName("com.mysql.jdbc.Driver");
 								Connection conn = DriverManager.getConnection(url, user, password);
-								String queryStu = "insert into student values('" + id + "', '" + usernameTextField.getText() + "', '" + password1 + "')";
+								String queryStu = "insert into student(username, password) values('" + usernameTextField.getText() + "', '" + password1 + "')";
 								Statement statement = conn.createStatement();
 								statement.executeUpdate(queryStu);
-								JOptionPane.showMessageDialog(null, "Successfully Registration");
+								//JOptionPane.showMessageDialog(null, "Successfully Registration");
+								JOptionPane.showMessageDialog(null, "Successful Registration");
 								setVisible(false);
 							}
 						} else if (rdbtnTeacher.isSelected()) {
@@ -216,10 +217,11 @@ public class registerPage extends JFrame {
 							} else {
 								Class.forName("com.mysql.jdbc.Driver");
 								Connection conn = DriverManager.getConnection(url, user, password);
-								String queryTea = "insert into teacher values('" + id + "', '" + usernameTextField.getText() + "', '" + password1 + "')";
+								String queryTea = "insert into teacher(username, password) values('" + usernameTextField.getText() + "', '" + password1 + "')";
 								Statement statement = conn.createStatement();
 								statement.executeUpdate(queryTea);
-								JOptionPane.showMessageDialog(null, "Successfully Registration");
+								//JOptionPane.showMessageDialog(null, "Successfully Registration");
+								JOptionPane.showMessageDialog(null, "Successful Registration");
 								setVisible(false);
 							}
 						}
