@@ -62,7 +62,6 @@ public class QuestionDisplayPanel extends JPanel {
 	private void init() {
 		scroll = new JScrollPane();
 		addTable();
-		//this.setBackground(new Color(255,255,204));
 		this.setBackground(Color.cyan);
 	}
 	
@@ -71,7 +70,7 @@ public class QuestionDisplayPanel extends JPanel {
 
 			@Override
 			public int compare(final Object[] o1, final Object[] o2) {
-				// TODO Auto-generated method stub
+
 				int entry1 = Integer.parseInt(o1[0].toString());
 				int entry2 = Integer.parseInt(o2[0].toString());
 
@@ -87,7 +86,6 @@ public class QuestionDisplayPanel extends JPanel {
 	
 	private void TableAutoResize() {
 		table.setPreferredScrollableViewportSize(new Dimension(this.frame.getWidth() / 3 - 10, this.frame.getHeight()));
-		//table.setBackground(new Color(255,255,204));
 		table.setBackground(Color.cyan);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		scroll.setViewportView(table);
@@ -95,10 +93,7 @@ public class QuestionDisplayPanel extends JPanel {
 		scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 	}
-	@SuppressWarnings("unchecked")
 	private void addTable() {
-		//Object [][]data;
-
 		DatabaseConn db = new DatabaseConn(url, user, password);
 		Connection conn = db.getMySqlConnection();		
 		if(conn == null) {
@@ -108,25 +103,14 @@ public class QuestionDisplayPanel extends JPanel {
 		ImplementationService imp = new ImplementationService(conn);
 		Object [][]data = imp.getAllQuestion(dPanel.level);
 		sortbyColumn(data, 0);
-		//System.out.println(data.length);
-		/*
-		Object [][]dataShow = new Object[data.length][2];
-		for (int i = 0; i < data.length; i++) {
-			if (data[i][3].equals(Integer.toString(dPanel.level))) {
-				dataShow[i][0] = data[i][0];
-				dataShow[i][1] = data[i][1];
-				
-			}
-		}*/
-		String []colName = {"id", "Question"};
+
+		String []colName = {"Question Number", "Question"};
 		table = new JTable(data, colName);
-		//table.setFont(new Font("Rockwell", Font.PLAIN, 21));
 		table.setFillsViewportHeight(true);
-		//table.getTableHeader().setBackground(new Color(255,255,204));
+		this.add(scroll, BorderLayout.CENTER);
 		table.getTableHeader().setBackground(Color.cyan);
 		table.getTableHeader().setForeground(Color.BLACK);
 		TableAutoResize();
-		this.add(scroll, BorderLayout.CENTER);
 
 		table.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
 	        public void valueChanged(ListSelectionEvent event) {

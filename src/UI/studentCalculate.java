@@ -1,5 +1,4 @@
 package UI;
-import java.awt.EventQueue;
 import java.awt.GridLayout;
 
 import javax.swing.JFrame;

@@ -29,28 +29,12 @@ public class CalculatorOperationPanel extends JPanel {
 	
 	private JPanel groupOperandBtn;
 	private JPanel groupOperationBtn;
-	/*
-	private JButton btnNum1;
-	private JButton btnNum2;
-	private JButton btnNum3;
-	private JButton btnNum4;
-	private JButton btnNum5;
-	private JButton btnNum6;
-	private JButton btnNum7;
-	private JButton btnNum8;
-	private JButton btnNum9;*/
-	//private JButton sample;
 	private JButton btnPlus;
 	private JButton btnMinus;
 	private JButton btnMulti;
 	private JButton btnDivision;
 	private int level;
 	private DragAndDropPanel dragPanel;
-	
-	//private JFrame dragPanelTest;
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JButton btnLeftPts;
 	private JButton btnRightPts;
@@ -75,16 +59,6 @@ public class CalculatorOperationPanel extends JPanel {
 	public void init() {
 		panelInit();
 		btnInit();
-		/*
-		groupOperandBtn.add(btnNum1);
-		groupOperandBtn.add(btnNum2);
-		groupOperandBtn.add(btnNum3);
-		groupOperandBtn.add(btnNum4);
-		groupOperandBtn.add(btnNum5);
-		groupOperandBtn.add(btnNum6);
-		groupOperandBtn.add(btnNum7);
-		groupOperandBtn.add(btnNum8);
-		groupOperandBtn.add(btnNum9);*/
 		groupOperandBtn.setLayout(new GridLayout(4,3));
 		groupOperandBtn.setBorder(BorderFactory.createTitledBorder("Operand"));
 		groupOperandBtn.setBackground(Color.CYAN);

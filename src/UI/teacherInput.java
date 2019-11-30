@@ -40,21 +40,6 @@ public class teacherInput extends JFrame {
 	private String user = "root";
 	private String password = "Kuan890618";
 	private teacherInput ti;
-	/**
-	 * Launch the application.
-	 */
-	/*public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					teacherInput frame = new teacherInput();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
 	public int getTotalQA() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -141,34 +126,16 @@ public class teacherInput extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				try{
-					/*Path currentRelativePath = Paths.get("");
-					String currentDir = currentRelativePath.toAbsolutePath().toString();
-					FileWriter fw=new FileWriter(currentDir + "\\testout.txt",true); 
-					fw.write("Question #");
-					fw.write(questionNum.getText());
-					fw.write("\n");   
-					fw.write(questionText.getText());
-					fw.write("\nAnswer #"); 
-					fw.write(questionNum.getText());
-					fw.write("\n");
-					fw.write(answerText.getText());
-					fw.write("\n");   
-					
-					fw.close();  */
 					Class.forName("com.mysql.jdbc.Driver");
 					Connection conn = DriverManager.getConnection(url, user, password);
-					//int index = getTotalQA();
-					//String id = Integer.toString(index + 1);
 					String level = "";
 					if (rdbtnLow.isSelected()) {
 						level = "0";
 					} else if (rdbtnHigh.isSelected()) {
 						level = "1";
 					} else {
-						//JOptionPane.showMessageDialog(null, "Error! Please Select the level of Grades!");
 						JOptionPane.showMessageDialog(null, "Error! Please Select the grade level!");
 					}
-					//System.out.println(id);
 					String query = "insert into question(question, answer, grades) values('" + questionText.getText() + "', '" + answerText.getText() + "','" + level + "')";
 					Statement statement = conn.createStatement();
 					statement.executeUpdate(query);

@@ -1,16 +1,10 @@
 package UI;
-
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Implementation.ImplementationService;
 
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -18,13 +12,11 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.awt.event.ActionEvent;
-import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JRadioButton;
 import java.awt.Color;
@@ -33,6 +25,10 @@ import javax.swing.JSeparator;
 
 public class registerPage extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField usernameTextField;
 	private JPasswordField passwordField;
@@ -41,22 +37,6 @@ public class registerPage extends JFrame {
 	private final String url = "jdbc:mysql://localhost:3306/mydb?useSSL=false";
 	private String user = "root";
 	private String password = "Kuan890618";
-
-	/**
-	 * Launch the application.
-	 */
-	/*public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					registerPage frame = new registerPage();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
 	
 	public boolean checkStuUsername(String username) {
 		try {
@@ -196,8 +176,6 @@ public class registerPage extends JFrame {
 					if (password1.equals(password_check)) {
 						boolean stuCheck = checkStuUsername(usernameTextField.getText());
 						boolean teaCheck = checkTeaUsername(usernameTextField.getText());
-						//int index = 2;
-						//String id = Integer.toString(index + 1);
 						if (rdbtnStudent.isSelected()) {
 							if (stuCheck == true) {
 								JOptionPane.showMessageDialog(null, "Username Exists!");
@@ -207,7 +185,6 @@ public class registerPage extends JFrame {
 								String queryStu = "insert into student(username, password) values('" + usernameTextField.getText() + "', '" + password1 + "')";
 								Statement statement = conn.createStatement();
 								statement.executeUpdate(queryStu);
-								//JOptionPane.showMessageDialog(null, "Successfully Registration");
 								JOptionPane.showMessageDialog(null, "Successful Registration");
 								setVisible(false);
 							}
@@ -220,7 +197,6 @@ public class registerPage extends JFrame {
 								String queryTea = "insert into teacher(username, password) values('" + usernameTextField.getText() + "', '" + password1 + "')";
 								Statement statement = conn.createStatement();
 								statement.executeUpdate(queryTea);
-								//JOptionPane.showMessageDialog(null, "Successfully Registration");
 								JOptionPane.showMessageDialog(null, "Successful Registration");
 								setVisible(false);
 							}
