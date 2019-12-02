@@ -12,11 +12,6 @@ public class TestUtils {
 	static int counter;
 
 	public static Component getChildNamed(Component parent, String name) {
-
-		// Debug line
-		//System.out.println("Class: " + parent.getClass() +
-		//		" Name: " + parent.getName());
-
 		if (name.equals(parent.getName())) { return parent; }
 
 		if (parent instanceof Container) {
@@ -58,10 +53,6 @@ public class TestUtils {
 	private static Component getChildIndexedInternal(
 			Component parent, String klass, int index) {
 
-		// Debug line
-		//System.out.println("Class: " + parent.getClass() +
-		//		" Name: " + parent.getName());
-
 		if (parent.getClass().toString().endsWith(klass)) {
 			if (counter == index) { return parent; }
 			++counter;
@@ -82,5 +73,4 @@ public class TestUtils {
 		return null;
 	}
 }
-// vim: set ai sw=4 ts=4:
 

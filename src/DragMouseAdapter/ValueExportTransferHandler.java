@@ -9,7 +9,12 @@ import javax.swing.JComponent;
 import javax.swing.TransferHandler;
 
 import UI.DragAndDropPanel;
-
+/***
+ * 
+ * @author MayankASU
+ * date create - 10/15/2019
+ * date modified - 11/15/2019
+ */
 @SuppressWarnings("serial")
 public class ValueExportTransferHandler extends TransferHandler{
 

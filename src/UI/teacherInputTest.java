@@ -17,17 +17,13 @@ class teacherInputTest  {
 
 	@Test
 	void testGetTotalQA() {
-		/*Data bse access*/
+		/*Database access*/
 	}
 
 	@Test
 	void testTeacherInput() {
 		 JTextField input = (JTextField)TestUtils.getChildNamed(teacherinputtest, "AnswerText");       
 		 assertNull(input);
-		 /*
-		 * input.setText("Helloworld"); input.postActionEvent();
-		 * assertEquals("Helloworld" + "?", input.getText());
-		 */
 	}
 
 

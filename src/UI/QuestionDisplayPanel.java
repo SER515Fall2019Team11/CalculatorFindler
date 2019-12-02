@@ -24,7 +24,12 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.awt.Font;
-
+/***
+ * 
+ * @author hzhan193, MayankASU
+ * date create - 10/15/2019
+ * date modified - 11/19/2019
+ */
 @SuppressWarnings("unused")
 public class QuestionDisplayPanel extends JPanel {
 	private JScrollPane scroll;

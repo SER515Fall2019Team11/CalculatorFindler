@@ -18,10 +18,14 @@ import javax.swing.JTextArea;
 import Implementation.ImplementationService;
 
 import java.awt.Font;
-
+/***
+ * 
+ * @author hzhan193, MayankASU
+ * date create - 11/14/2019
+ * date modified - 11/19/2019
+ */
 public class DragAndDropPanel extends JPanel {
 	public JTextArea text, result;
-	//private JLabel result;
 	private JPanel dragAndDrop;
 	private JPanel resultPanel;
 	private JPanel operation;
@@ -35,10 +39,6 @@ public class DragAndDropPanel extends JPanel {
 	private studentCalculate stu;
 	public String Id;
 	public DragAndDropPanel obj_of_drag_drop;
-	//private static int res = 0;
-	//private int eqn_counter_start;
-	//private char operator = '`';
-	//private int flag;
 	
 	/**
 	 * 
@@ -56,7 +56,6 @@ public class DragAndDropPanel extends JPanel {
 		init();
 	}
 	public void init() {
-		//this.setBorder(BorderFactory.createTitledBorder("Drag & Drop Area"));
 		this.setBackground(Color.cyan);
 		
 		/***
@@ -78,7 +77,6 @@ public class DragAndDropPanel extends JPanel {
 		text.setBorder(BorderFactory.createTitledBorder(""));
 		text.setBackground(Color.cyan);
 		resultPanel = new JPanel();
-		//resultPanel.setBorder(BorderFactory.createTitledBorder("Result"));
 		resultPanel.setBackground(Color.cyan);
 	
 		
@@ -86,12 +84,10 @@ public class DragAndDropPanel extends JPanel {
 		dragAndDrop.add(dropArea);
 		dragAndDrop.setLayout(new GridLayout(1, 2));
 		
-		//Trying JTextArea instead of Jlabel to display result
 		result = new JTextArea();
 		result.setFont(new Font("Rockwell", Font.PLAIN, 26));
 		result.setColumns(19);
 		result.setRows(4);
-		//result.setBorder(BorderFactory.createTitledBorder("Drag & Drop Area"));
 		result.setBackground(Color.cyan);
 		result.setEditable(false);
 		result.setLineWrap(true);
@@ -113,11 +109,9 @@ public class DragAndDropPanel extends JPanel {
 		
 		operation.add(btn1);
 		operation.add(btn2);
-		//operation.setBorder(BorderFactory.createTitledBorder("more operation"));
 		operation.setBackground(Color.cyan);
 		operation.setLayout(new GridLayout(1, 2));
 		
-		//this.add(text);
 		this.add(dragAndDrop);
 		this.add(resultPanel);
 		this.add(operation);
@@ -130,7 +124,6 @@ public class DragAndDropPanel extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				mainPage main = new mainPage();
 				main.setVisible(true);
-				//studentCalculate stu = new studentCalculate(level);
 				stu.dispose();
 			}
 		});
@@ -140,8 +133,6 @@ public class DragAndDropPanel extends JPanel {
 		
 		btn1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//res = 0;
-				//operator = '`';
 				text.setText(null);
 				result.setText(null);
 			}

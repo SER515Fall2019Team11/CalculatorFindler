@@ -13,13 +13,13 @@ class DragAndDropPanelTest {
 
 	@Test
 	void testInit() {
-		/*Initialises window viz test when ran*/
+		/*Initializes window via test when ran*/
 	}
 
 	@Test
 	void testCalculate() {
 		dadptest.calculate("Invalideqn");
-		/*Valid as the ogic is handled by an inbuilt function ScriptEngine*/
+		/*Valid as the logic is handled by an in-built function ScriptEngine*/
 		
 	}
 
