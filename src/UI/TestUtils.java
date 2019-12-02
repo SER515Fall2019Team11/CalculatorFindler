@@ -2,6 +2,7 @@
  * TestUtils
  Author: Jain Nayan
  Derived From: Ichiro Suzuki
+ Built for: SER 515, Professor Findler
  This piece of code has been derived from 
  https://www.javaworld.com/article/2073056/automate-gui-tests-for-swing-applications.html?page=2
  It includes some test functionalities that are beyond the scope of this project.
