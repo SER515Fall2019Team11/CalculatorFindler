@@ -1,4 +1,9 @@
 package UI;
+/*
+Author: Yansong Peng and Jain Nayan
+Date: 11/17/2019
+For: SER515, Professor Findler
+*/
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
