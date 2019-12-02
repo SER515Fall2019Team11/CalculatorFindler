@@ -146,6 +146,7 @@ public class mainPage extends JFrame {
 		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		
 		usernameTF = new JTextField();
+		usernameTF.setName("mainpage");
 		usernameTF.setBounds(276, 122, 427, 46);
 		usernameTF.setForeground(Color.WHITE);
 		usernameTF.setBackground(Color.DARK_GRAY);

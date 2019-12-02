@@ -67,6 +67,7 @@ public class teacherInput extends JFrame {
 		setContentPane(contentPane);
 		
 		JTextArea answerText = new JTextArea();
+		answerText.setText("AnswerText");
 		answerText.setFont(new Font("Times New Roman", Font.PLAIN, 45));
 		answerText.setTabSize(4);
 		
