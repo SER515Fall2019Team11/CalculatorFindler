@@ -1,4 +1,9 @@
 package UI;
+/*
+Author: Yansong Peng
+Date: 11/13/2019
+For: SER515, Professor Findler
+*/
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
