@@ -1,4 +1,11 @@
 package UI;
+
+/*
+Author: Yansong Peng and Jain Nayan
+Date: 11/15/2019
+For: SER515, Professor Findler
+*/
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
