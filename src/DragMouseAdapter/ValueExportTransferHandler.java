@@ -9,7 +9,12 @@ import javax.swing.JComponent;
 import javax.swing.TransferHandler;
 
 import UI.DragAndDropPanel;
-
+/***
+ * 
+ * @author MayankASU
+ * date create - 10/15/2019
+ * date modified - 11/10/2019
+ */
 @SuppressWarnings("serial")
 public class ValueExportTransferHandler extends TransferHandler{
 
@@ -41,7 +46,8 @@ public class ValueExportTransferHandler extends TransferHandler{
         protected void exportDone(JComponent source, Transferable data, int action) {
             super.exportDone(source, data, action);
             // Decide what to do after the drop has been accepted
-            dragPanel.calculate();
+            String eqn = dragPanel.text.getText();
+            dragPanel.calculate(eqn);
         }
 
     }

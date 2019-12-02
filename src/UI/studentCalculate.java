@@ -1,32 +1,24 @@
 package UI;
-import java.awt.EventQueue;
 import java.awt.GridLayout;
 
 import javax.swing.JFrame;
-
+/***
+ * 
+ * @author MayankASU, hzhan193
+ * date create - 10/15/2019
+ * date modified - 10/15/2019
+ */
 @SuppressWarnings("serial")
 public class studentCalculate extends JFrame {
 
-	/**
-	 * Launch the application.
-	 */
-	/*public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					studentCalculate frame = new studentCalculate();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
-
+	private int level;
+	private studentCalculate stu;
 	/**
 	 * Create the application.
 	 */
-	public studentCalculate() {
+	public studentCalculate(int level) {
+		this.level = level;
+		stu = this;
 		initialize();
 	}
 
@@ -35,9 +27,9 @@ public class studentCalculate extends JFrame {
 	 */
 	private void initialize() {		
 		setBounds(100, 100, 1400, 500);
-		DragAndDropPanel dPanel = new DragAndDropPanel();
-		CalculatorOperationPanel operationPanel = new CalculatorOperationPanel(dPanel);
-		QuestionDisplayPanel qPanel = new QuestionDisplayPanel(this);
+		DragAndDropPanel dPanel = new DragAndDropPanel(level, stu);
+		CalculatorOperationPanel operationPanel = new CalculatorOperationPanel(dPanel, level);
+		QuestionDisplayPanel qPanel = new QuestionDisplayPanel(this, dPanel);
 		
 		add(operationPanel);
 		add(dPanel);

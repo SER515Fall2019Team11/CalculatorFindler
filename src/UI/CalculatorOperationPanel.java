@@ -22,157 +22,131 @@ import DragMouseAdapter.DragMouseAdapter;
 import DragMouseAdapter.ValueExportTransferHandler;
 import DragMouseAdapter.ValueImportTransferHandler;
 import java.awt.Font;
+import java.awt.SystemColor;
 
 @SuppressWarnings("unused")
 public class CalculatorOperationPanel extends JPanel {
 	
 	private JPanel groupOperandBtn;
 	private JPanel groupOperationBtn;
-	/*
-	private JButton btnNum1;
-	private JButton btnNum2;
-	private JButton btnNum3;
-	private JButton btnNum4;
-	private JButton btnNum5;
-	private JButton btnNum6;
-	private JButton btnNum7;
-	private JButton btnNum8;
-	private JButton btnNum9;*/
-	//private JButton sample;
 	private JButton btnPlus;
 	private JButton btnMinus;
 	private JButton btnMulti;
 	private JButton btnDivision;
+	private int level;
 	private DragAndDropPanel dragPanel;
-	
-	//private JFrame dragPanelTest;
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	private JButton btnLeftPts;
+	private JButton btnRightPts;
 
 	/**
 	 * Create the panel.
 	 */
-	public CalculatorOperationPanel(DragAndDropPanel dPanel) {
+	public CalculatorOperationPanel(DragAndDropPanel dPanel, int level) {
 		dragPanel = dPanel;
+		this.level = level;
 		init();
 	}
 	
-	
+	public void disabledButton(int level) {
+		if(level == 0) {
+			this.btnMulti.setVisible(false);
+			this.btnDivision.setVisible(false);
+			this.btnLeftPts.setVisible(false);
+			this.btnRightPts.setVisible(false);
+		}
+	}
 	public void init() {
 		panelInit();
 		btnInit();
-		/*
-		groupOperandBtn.add(btnNum1);
-		groupOperandBtn.add(btnNum2);
-		groupOperandBtn.add(btnNum3);
-		groupOperandBtn.add(btnNum4);
-		groupOperandBtn.add(btnNum5);
-		groupOperandBtn.add(btnNum6);
-		groupOperandBtn.add(btnNum7);
-		groupOperandBtn.add(btnNum8);
-		groupOperandBtn.add(btnNum9);*/
-		groupOperandBtn.setLayout(new GridLayout(3,3));
+		groupOperandBtn.setLayout(new GridLayout(4,3));
 		groupOperandBtn.setBorder(BorderFactory.createTitledBorder("Operand"));
-		groupOperandBtn.setBackground(Color.cyan);
+		groupOperandBtn.setBackground(Color.CYAN);
 		
 		groupOperationBtn.add(btnPlus);
 		groupOperationBtn.add(btnMinus);
 		groupOperationBtn.add(btnMulti);
 		groupOperationBtn.add(btnDivision);
-		groupOperationBtn.setLayout(new GridLayout(2,2));
+		groupOperationBtn.add(btnLeftPts);
+		groupOperationBtn.add(btnRightPts);
+		
+		groupOperationBtn.setLayout(new GridLayout(3,2));
 		groupOperationBtn.setBorder(BorderFactory.createTitledBorder("Operator"));
 		groupOperationBtn.setBackground(Color.cyan);
 		
 		this.add(groupOperandBtn);
 		this.add(groupOperationBtn);
+		
 		this.setLayout(new GridLayout(2,1));
 	}
 	private void panelInit() {
 		groupOperandBtn = new JPanel();
 		groupOperationBtn = new JPanel();
-		//this.setBackground(new Color(255,255,204));
 		this.setBackground(Color.cyan);
 	}
 	private void btnInit() {
 		DragMouseAdapter listener = new DragMouseAdapter();
-		for(int i = 1; i <= 9; i++) {
+		for(int i = 0; i <= 9; i++) {
 			JButton btnOperand = new JButton(Integer.toString(i));
-			//btnOperand.setForeground(Color.cyan);
-			//btnOperand.setBackground(Color.cyan);
+			btnOperand.setBackground(Color.cyan);
+			btnOperand.setOpaque(true);
+			btnOperand.setBorderPainted(false);
 			groupOperandBtn.add(btnOperand);
 			btnOperand.setFont(new Font("Rockwell", Font.PLAIN, 28));
-			/*
-			btnOperand.addMouseListener(new MouseAdapter() {//add click event listener
-				@Override
-				public void mouseClicked(MouseEvent e) {
-					Object obj = e.getSource();
-					if(obj instanceof JButton) {
-						JButton btn = (JButton)obj;
-						JTextField textField = new JTextField(btn.getText());
-						textField.setDragEnabled(true);
-						dragPanel.add(textField);
-						dragPanel.revalidate();
-						System.out.println(btn.getText());
-					}
-				}
-			});*/
 			btnOperand.setTransferHandler(new ValueExportTransferHandler(Integer.toString(i), dragPanel));
 			btnOperand.addMouseMotionListener(listener);
-			/*btnOperand.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseReleased(MouseEvent e) {
-					JButton btn = (JButton)e.getSource();
-					System.out.println(btn.getText());
-					dragPanel.setText(btn.getText());
-				}
-			});*/ //Testing for Jframe
 		}
 		btnPlus = new JButton("+");
-		btnPlus.setFont(new Font("Rockwell", Font.PLAIN, 36));
-		
+		btnPlus.setFont(new Font("Rockwell", Font.PLAIN, 32));
+		btnPlus.setBackground(Color.cyan);
+		btnPlus.setOpaque(true);
+		btnPlus.setBorderPainted(false);
 		btnPlus.setTransferHandler(new ValueExportTransferHandler("+", dragPanel));
 		btnPlus.addMouseMotionListener(listener);
 		
-		/*
-		dragPanel.setLayout(new GridLayout(1,4));
-		JLabel b1 = new JLabel("Enter");
-		JLabel b2 = new JLabel("Enter");
-		JLabel b3 = new JLabel("Enter");
-		JLabel b4 = new JLabel("Enter");
-		JLabel b5 = new JLabel("Enter");
-		JLabel b6 = new JLabel("Enter");
-		
-		b1.setTransferHandler(new ValueImportTransferHandler());
-		b2.setTransferHandler(new ValueImportTransferHandler());
-		b3.setTransferHandler(new ValueImportTransferHandler());
-		b4.setTransferHandler(new ValueImportTransferHandler());
-		b5.setTransferHandler(new ValueImportTransferHandler());
-		b6.setTransferHandler(new ValueImportTransferHandler());
-		
-		dragPanel.add(b1);
-		dragPanel.add(b2);
-		dragPanel.add(b3);
-		dragPanel.add(b4);
-		dragPanel.add(b5);
-		dragPanel.add(b6);
-		*/
 		
 		btnMinus = new JButton("-");
-		btnMinus.setFont(new Font("Rockwell", Font.PLAIN, 36));
+		btnMinus.setFont(new Font("Rockwell", Font.PLAIN, 32));
+		btnMinus.setBackground(Color.cyan);
+		btnMinus.setOpaque(true);
+		btnMinus.setBorderPainted(false);
 		btnMinus.setTransferHandler(new ValueExportTransferHandler("-", dragPanel));
 		btnMinus.addMouseMotionListener(listener);
 		
 		btnMulti = new JButton("*");
-		btnMulti.setFont(new Font("Rockwell", Font.PLAIN, 36));
+		btnMulti.setFont(new Font("Rockwell", Font.PLAIN, 32));
+		btnMulti.setBackground(Color.cyan);
+		btnMulti.setOpaque(true);
+		btnMulti.setBorderPainted(false);
 		btnMulti.setTransferHandler(new ValueExportTransferHandler("*", dragPanel));
 		btnMulti.addMouseMotionListener(listener);
 		
 		btnDivision = new JButton("/");
-		btnDivision.setFont(new Font("Rockwell", Font.PLAIN, 36));
+		btnDivision.setFont(new Font("Rockwell", Font.PLAIN, 32));
+		btnDivision.setBackground(Color.cyan);
+		btnDivision.setOpaque(true);
+		btnDivision.setBorderPainted(false);
 		btnDivision.setTransferHandler(new ValueExportTransferHandler("/", dragPanel));
 		btnDivision.addMouseMotionListener(listener);
+		
+		btnLeftPts = new JButton("(");
+		btnLeftPts.setFont(new Font("Rockwell", Font.PLAIN, 30));
+		btnLeftPts.setBackground(Color.cyan);
+		btnLeftPts.setOpaque(true);
+		btnLeftPts.setBorderPainted(false);
+		btnLeftPts.setTransferHandler(new ValueExportTransferHandler("(", dragPanel));
+		btnLeftPts.addMouseMotionListener(listener);
+		
+		btnRightPts = new JButton(")");
+		btnRightPts.setFont(new Font("Rockwell", Font.PLAIN, 30));
+		btnRightPts.setBackground(Color.cyan);
+		btnRightPts.setOpaque(true);
+		btnRightPts.setBorderPainted(false);
+		btnRightPts.setTransferHandler(new ValueExportTransferHandler(")", dragPanel));
+		btnRightPts.addMouseMotionListener(listener);
+		
+		disabledButton(this.level);
+	
 	}
 
 }
