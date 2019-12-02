@@ -2,7 +2,12 @@ package UI;
 import java.awt.GridLayout;
 
 import javax.swing.JFrame;
-
+/***
+ * 
+ * @author MayankASU, hzhan193
+ * date create - 10/15/2019
+ * date modified - 10/15/2019
+ */
 @SuppressWarnings("serial")
 public class studentCalculate extends JFrame {
 

@@ -6,9 +6,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Implementation.ImplementationService;
-
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
@@ -20,7 +17,6 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.JTextField;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import java.awt.Color;
@@ -110,24 +106,6 @@ public class mainPage extends JFrame {
 		contentPane.setBackground(Color.DARK_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		
-		/*JButton btnStudent = new JButton("Student");
-		btnStudent.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				studentCalculate student = new studentCalculate();
-				student.setVisible(true);
-			}
-		});
-		btnStudent.setFont(new Font("Stencil", Font.PLAIN, 17));
-		
-		JButton btnTeacher = new JButton("Teacher");
-		btnTeacher.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				teacherInput teacher = new teacherInput();
-				teacher.setVisible(true);
-			}
-		});
-		btnTeacher.setFont(new Font("Stencil", Font.PLAIN, 17));*/
 		
 		JLabel lblWelcomePleaseSelect = new JLabel("Welcome! Please Log in / Register");
 		lblWelcomePleaseSelect.setBounds(145, 18, 1149, 58);

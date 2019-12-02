@@ -24,6 +24,12 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.awt.Font;
+/***
+ * 
+ * @author MayankASU, hzhan193
+ * date create - 10/15/2019
+ * date modified - 10/15/2019
+ */
 
 @SuppressWarnings("unused")
 public class QuestionDisplayPanel extends JPanel {

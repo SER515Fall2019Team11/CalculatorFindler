@@ -11,7 +11,7 @@ import UI.DragAndDropPanel;
 
 /***
  * 
- * @author hzhan193
+ * @author hzhan193, MayankASU
  * date create - 11/14/2019
  * date modified - 11/19/2019
  */
@@ -178,9 +178,7 @@ public class ImplementationService {
 				return false;
 				}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-			//dPanel.result.setText("Press 'CLEAR' and start again !");
 		} catch(NumberFormatException e) {
 			JOptionPane.showMessageDialog(null, "Press 'CLEAR' and solve the equation!");
 		}

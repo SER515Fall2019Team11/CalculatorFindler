@@ -82,7 +82,6 @@ public class CalculatorOperationPanel extends JPanel {
 	private void panelInit() {
 		groupOperandBtn = new JPanel();
 		groupOperationBtn = new JPanel();
-		//this.setBackground(new Color(255,255,204));
 		this.setBackground(Color.cyan);
 	}
 	private void btnInit() {
