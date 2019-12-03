@@ -7,7 +7,12 @@ import java.awt.datatransfer.Transferable;
 //import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.TransferHandler;
-
+/***
+ * 
+ * @author hzhan193, MayankASU
+ * date create - 10/15/2019
+ * date modified - 10/15/2019
+ */
 @SuppressWarnings("serial")
 public class ValueImportTransferHandler extends TransferHandler{
 	
